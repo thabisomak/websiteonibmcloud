@@ -611,7 +611,7 @@ body.elementor-page .elementor-widget-menu-anchor {margin-bottom: 0;}
 .elementor-shape-circle .elementor-icon.elementor-social-icon {-webkit-border-radius: 50%;border-radius: 50%;}
 .elementor-star-rating {color: #ccd6df;font-family: eicons;display: inline-block;}
 .elementor-star-rating i {display: inline-block;position: relative;font-style: normal;cursor: default;}
-.elementor-star-rating i:before {content: "";display: block;font-size: inherit;font-family: inherit;position: absolute;overflow: hidden;color: #f0ad4e;top: 0;left: 0;}
+.elementor-star-rating i:before {content: "";display: block;font-size: inherit;font-family: inherit;position: absolute;overflow: hidden;color: #f0ad4e;top: 0;left: 0;}
 .elementor-star-rating .elementor-star-empty:before {content: none;}
 .elementor-star-rating .elementor-star-1:before {width: 10%;}
 .elementor-star-rating .elementor-star-2:before {width: 20%;}
