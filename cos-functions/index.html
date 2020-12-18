@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta charset="UTF-8"><title>COS + Functions – Tutorial</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="astra-theme-css-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/css/minified/style.min.css" media="all"><style id="astra-theme-css-inline-css">
+html{font-size:100%;}a,.page-title{color:#29d8db;}a:hover,a:focus{color:#01578c;}body,button,input,select,textarea,.ast-button,.ast-custom-button{font-family:'Work Sans',sans-serif;font-weight:400;font-size:16px;font-size:1rem;line-height:1.5;}blockquote{color:#2f2f2f;}p,.entry-content p{margin-bottom:0em;}h1,.entry-content h1,h2,.entry-content h2,h3,.entry-content h3,h4,.entry-content h4,h5,.entry-content h5,h6,.entry-content h6,.site-title,.site-title a{font-family:'Montserrat',sans-serif;font-weight:800;}.site-title{font-size:25px;font-size:1.5625rem;}header .site-logo-img .custom-logo-link img{max-width:160px;}.astra-logo-svg{width:160px;}.ast-archive-description .ast-archive-title{font-size:40px;font-size:2.5rem;}.site-header .site-description{font-size:15px;font-size:0.9375rem;}.entry-title{font-size:40px;font-size:2.5rem;}.comment-reply-title{font-size:26px;font-size:1.625rem;}.ast-comment-list #cancel-comment-reply-link{font-size:16px;font-size:1rem;}h1,.entry-content h1{font-size:60px;font-size:3.75rem;font-family:'Montserrat',sans-serif;line-height:1.3;}h2,.entry-content h2{font-size:40px;font-size:2.5rem;font-family:'Montserrat',sans-serif;line-height:1.4;}h3,.entry-content h3{font-size:30px;font-size:1.875rem;font-family:'Montserrat',sans-serif;line-height:1.5;}h4,.entry-content h4{font-size:20px;font-size:1.25rem;}h5,.entry-content h5{font-size:18px;font-size:1.125rem;}h6,.entry-content h6{font-size:15px;font-size:0.9375rem;}.ast-single-post .entry-title,.page-title{font-size:30px;font-size:1.875rem;}#secondary,#secondary button,#secondary input,#secondary select,#secondary textarea{font-size:16px;font-size:1rem;}::selection{background-color:#29d8db;color:#000000;}body,h1,.entry-title a,.entry-content h1,h2,.entry-content h2,h3,.entry-content h3,h4,.entry-content h4,h5,.entry-content h5,h6,.entry-content h6,.wc-block-grid__product-title{color:#7a7a7a;}.tagcloud a:hover,.tagcloud a:focus,.tagcloud a.current-item{color:#000000;border-color:#29d8db;background-color:#29d8db;}.main-header-menu .menu-link,.ast-header-custom-item a{color:#7a7a7a;}.main-header-menu .menu-item:hover > .menu-link,.main-header-menu .menu-item:hover > .ast-menu-toggle,.main-header-menu .ast-masthead-custom-menu-items a:hover,.main-header-menu .menu-item.focus > .menu-link,.main-header-menu .menu-item.focus > .ast-menu-toggle,.main-header-menu .current-menu-item > .menu-link,.main-header-menu .current-menu-ancestor > .menu-link,.main-header-menu .current-menu-item > .ast-menu-toggle,.main-header-menu .current-menu-ancestor > .ast-menu-toggle{color:#29d8db;}input:focus,input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="reset"]:focus,input[type="search"]:focus,textarea:focus{border-color:#29d8db;}input[type="radio"]:checked,input[type=reset],input[type="checkbox"]:checked,input[type="checkbox"]:hover:checked,input[type="checkbox"]:focus:checked,input[type=range]::-webkit-slider-thumb{border-color:#29d8db;background-color:#29d8db;box-shadow:none;}.site-footer a:hover + .post-count,.site-footer a:focus + .post-count{background:#29d8db;border-color:#29d8db;}.ast-small-footer{color:#01578c;}.ast-small-footer > .ast-footer-overlay{background-color:#f6f9f9;;}.ast-small-footer a{color:#01578c;}.footer-adv .footer-adv-overlay{border-top-style:solid;border-top-color:#7a7a7a;}.ast-comment-meta{line-height:1.666666667;font-size:13px;font-size:0.8125rem;}.single .nav-links .nav-previous,.single .nav-links .nav-next,.single .ast-author-details .author-title,.ast-comment-meta{color:#29d8db;}.entry-meta,.entry-meta *{line-height:1.45;color:#29d8db;}.entry-meta a:hover,.entry-meta a:hover *,.entry-meta a:focus,.entry-meta a:focus *{color:#01578c;}.ast-404-layout-1 .ast-404-text{font-size:200px;font-size:12.5rem;}.widget-title{font-size:22px;font-size:1.375rem;color:#7a7a7a;}#cat option,.secondary .calendar_wrap thead a,.secondary .calendar_wrap thead a:visited{color:#29d8db;}.secondary .calendar_wrap #today,.ast-progress-val span{background:#29d8db;}.secondary a:hover + .post-count,.secondary a:focus + .post-count{background:#29d8db;border-color:#29d8db;}.calendar_wrap #today > a{color:#000000;}.ast-pagination a,.page-links .page-link,.single .post-navigation a{color:#29d8db;}.ast-pagination a:hover,.ast-pagination a:focus,.ast-pagination > span:hover:not(.dots),.ast-pagination > span.current,.page-links > .page-link,.page-links .page-link:hover,.post-navigation a:hover{color:#01578c;}.ast-header-break-point .ast-mobile-menu-buttons-minimal.menu-toggle{background:transparent;color:#01578c;}.ast-header-break-point .ast-mobile-menu-buttons-outline.menu-toggle{background:transparent;border:1px solid #01578c;color:#01578c;}.ast-header-break-point .ast-mobile-menu-buttons-fill.menu-toggle{background:#01578c;color:#ffffff;}.ast-header-break-point .main-header-bar .ast-button-wrap .menu-toggle{border-radius:7px;}.wp-block-buttons.aligncenter{justify-content:center;}@media (max-width:782px){.entry-content .wp-block-columns .wp-block-column{margin-left:0px;}}@media (max-width:768px){#secondary.secondary{padding-top:0;}.ast-separate-container .ast-article-post,.ast-separate-container .ast-article-single{padding:1.5em 2.14em;}.ast-separate-container #primary,.ast-separate-container #secondary{padding:1.5em 0;}.ast-separate-container.ast-right-sidebar #secondary{padding-left:1em;padding-right:1em;}.ast-separate-container.ast-two-container #secondary{padding-left:0;padding-right:0;}.ast-page-builder-template .entry-header #secondary{margin-top:1.5em;}.ast-page-builder-template #secondary{margin-top:1.5em;}#primary,#secondary{padding:1.5em 0;margin:0;}.ast-left-sidebar #content > .ast-container{display:flex;flex-direction:column-reverse;width:100%;}.ast-author-box img.avatar{margin:20px 0 0 0;}.ast-pagination{padding-top:1.5em;text-align:center;}.ast-pagination .next.page-numbers{display:inherit;float:none;}}@media (max-width:768px){.ast-page-builder-template.ast-left-sidebar #secondary{padding-right:20px;}.ast-page-builder-template.ast-right-sidebar #secondary{padding-left:20px;}.ast-right-sidebar #primary{padding-right:0;}.ast-right-sidebar #secondary{padding-left:0;}.ast-left-sidebar #primary{padding-left:0;}.ast-left-sidebar #secondary{padding-right:0;}.ast-pagination .prev.page-numbers{padding-left:.5em;}.ast-pagination .next.page-numbers{padding-right:.5em;}}@media (min-width:769px){.ast-separate-container.ast-right-sidebar #primary,.ast-separate-container.ast-left-sidebar #primary{border:0;}.ast-separate-container.ast-right-sidebar #secondary,.ast-separate-container.ast-left-sidebar #secondary{border:0;margin-left:auto;margin-right:auto;}.ast-separate-container.ast-two-container #secondary .widget:last-child{margin-bottom:0;}.ast-separate-container .ast-comment-list li .comment-respond{padding-left:2.66666em;padding-right:2.66666em;}.ast-author-box{-js-display:flex;display:flex;}.ast-author-bio{flex:1;}.error404.ast-separate-container #primary,.search-no-results.ast-separate-container #primary{margin-bottom:4em;}}@media (min-width:769px){.ast-right-sidebar #primary{border-right:1px solid #eee;}.ast-right-sidebar #secondary{border-left:1px solid #eee;margin-left:-1px;}.ast-left-sidebar #primary{border-left:1px solid #eee;}.ast-left-sidebar #secondary{border-right:1px solid #eee;margin-right:-1px;}.ast-separate-container.ast-two-container.ast-right-sidebar #secondary{padding-left:30px;padding-right:0;}.ast-separate-container.ast-two-container.ast-left-sidebar #secondary{padding-right:30px;padding-left:0;}}.elementor-button-wrapper .elementor-button{border-style:solid;border-top-width:0;border-right-width:0;border-left-width:0;border-bottom-width:0;}body .elementor-button.elementor-size-sm,body .elementor-button.elementor-size-xs,body .elementor-button.elementor-size-md,body .elementor-button.elementor-size-lg,body .elementor-button.elementor-size-xl,body .elementor-button{border-radius:10px;padding-top:16px;padding-right:40px;padding-bottom:16px;padding-left:40px;}.elementor-button-wrapper .elementor-button{border-color:#29d8db;background-color:#29d8db;}.elementor-button-wrapper .elementor-button:hover,.elementor-button-wrapper .elementor-button:focus{color:#ffffff;background-color:#106ca0;border-color:#106ca0;}.wp-block-button .wp-block-button__link,.elementor-button-wrapper .elementor-button,.elementor-button-wrapper .elementor-button:visited{color:#ffffff;}.elementor-button-wrapper .elementor-button{font-family:inherit;font-weight:inherit;line-height:1;}.wp-block-button .wp-block-button__link{border-style:solid;border-top-width:0;border-right-width:0;border-left-width:0;border-bottom-width:0;border-color:#29d8db;background-color:#29d8db;color:#ffffff;font-family:inherit;font-weight:inherit;line-height:1;border-radius:10px;padding-top:16px;padding-right:40px;padding-bottom:16px;padding-left:40px;}.wp-block-button .wp-block-button__link:hover,.wp-block-button .wp-block-button__link:focus{color:#ffffff;background-color:#106ca0;border-color:#106ca0;}.elementor-widget-heading h1.elementor-heading-title{line-height:1.3;}.elementor-widget-heading h2.elementor-heading-title{line-height:1.4;}.elementor-widget-heading h3.elementor-heading-title{line-height:1.5;}.menu-toggle,button,.ast-button,.ast-custom-button,.button,input#submit,input[type="button"],input[type="submit"],input[type="reset"]{border-style:solid;border-top-width:0;border-right-width:0;border-left-width:0;border-bottom-width:0;color:#ffffff;border-color:#29d8db;background-color:#29d8db;border-radius:10px;padding-top:16px;padding-right:40px;padding-bottom:16px;padding-left:40px;font-family:inherit;font-weight:inherit;line-height:1;}button:focus,.menu-toggle:hover,button:hover,.ast-button:hover,.button:hover,input[type=reset]:hover,input[type=reset]:focus,input#submit:hover,input#submit:focus,input[type="button"]:hover,input[type="button"]:focus,input[type="submit"]:hover,input[type="submit"]:focus{color:#ffffff;background-color:#106ca0;border-color:#106ca0;}@media (min-width:768px){.ast-container{max-width:100%;}}@media (min-width:544px){.ast-container{max-width:100%;}}@media (max-width:544px){.ast-separate-container .ast-article-post,.ast-separate-container .ast-article-single{padding:1.5em 1em;}.ast-separate-container #content .ast-container{padding-left:0.54em;padding-right:0.54em;}.ast-separate-container #secondary{padding-top:0;}.ast-separate-container.ast-two-container #secondary .widget{margin-bottom:1.5em;padding-left:1em;padding-right:1em;}.ast-separate-container .comments-count-wrapper{padding:1.5em 1em;}.ast-separate-container .ast-comment-list li.depth-1{padding:1.5em 1em;margin-bottom:1.5em;}.ast-separate-container .ast-comment-list .bypostauthor{padding:.5em;}.ast-separate-container .ast-archive-description{padding:1.5em 1em;}.ast-search-menu-icon.ast-dropdown-active .search-field{width:170px;}.ast-separate-container .comment-respond{padding:1.5em 1em;}}@media (max-width:544px){.ast-comment-list .children{margin-left:0.66666em;}.ast-separate-container .ast-comment-list .bypostauthor li{padding:0 0 0 .5em;}}@media (max-width:768px){.ast-mobile-header-stack .main-header-bar .ast-search-menu-icon{display:inline-block;}.ast-header-break-point.ast-header-custom-item-outside .ast-mobile-header-stack .main-header-bar .ast-search-icon{margin:0;}.ast-comment-avatar-wrap img{max-width:2.5em;}.comments-area{margin-top:1.5em;}.ast-separate-container .comments-count-wrapper{padding:2em 2.14em;}.ast-separate-container .ast-comment-list li.depth-1{padding:1.5em 2.14em;}.ast-separate-container .comment-respond{padding:2em 2.14em;}}@media (max-width:768px){.ast-header-break-point .main-header-bar .ast-search-menu-icon.slide-search .search-form{right:0;}.ast-header-break-point .ast-mobile-header-stack .main-header-bar .ast-search-menu-icon.slide-search .search-form{right:-1em;}.ast-comment-avatar-wrap{margin-right:0.5em;}}.main-header-bar .button-custom-menu-item .ast-custom-button-link .ast-custom-button,.ast-theme-transparent-header .main-header-bar .button-custom-menu-item .ast-custom-button-link .ast-custom-button{font-family:inherit;font-weight:inherit;line-height:1;}.main-header-bar .button-custom-menu-item .ast-custom-button-link .ast-custom-button{padding-top:15px;padding-bottom:15px;padding-left:35px;padding-right:35px;border-style:solid;border-top-width:0px;border-right-width:0px;border-left-width:0px;border-bottom-width:0px;}.ast-theme-transparent-header .main-header-bar .button-custom-menu-item .ast-custom-button-link .ast-custom-button{border-style:solid;}@media (min-width:545px){.ast-page-builder-template .comments-area,.single.ast-page-builder-template .entry-header,.single.ast-page-builder-template .post-navigation{max-width:1240px;margin-left:auto;margin-right:auto;}}@media (max-width:768px){.ast-archive-description .ast-archive-title{font-size:40px;}.entry-title{font-size:30px;}h1,.entry-content h1{font-size:60px;}h2,.entry-content h2{font-size:40px;}h3,.entry-content h3{font-size:30px;}h4,.entry-content h4{font-size:18px;font-size:1.125rem;}h5,.entry-content h5{font-size:18px;font-size:1.125rem;}h6,.entry-content h6{font-size:15px;font-size:0.9375rem;}.ast-single-post .entry-title,.page-title{font-size:30px;}}@media (max-width:544px){.ast-archive-description .ast-archive-title{font-size:40px;}.entry-title{font-size:30px;}h1,.entry-content h1{font-size:24px;}h2,.entry-content h2{font-size:40px;}h3,.entry-content h3{font-size:30px;}h4,.entry-content h4{font-size:16px;font-size:1rem;}h5,.entry-content h5{font-size:18px;font-size:1.125rem;}h6,.entry-content h6{font-size:15px;font-size:0.9375rem;}.ast-single-post .entry-title,.page-title{font-size:30px;}.ast-header-break-point .site-branding img,.ast-header-break-point #masthead .site-logo-img .custom-logo-link img{max-width:140px;}.astra-logo-svg{width:140px;}.ast-header-break-point .site-logo-img .custom-mobile-logo-link img{max-width:140px;}}@media (max-width:768px){html{font-size:91.2%;}}@media (max-width:544px){html{font-size:91.2%;}}@media (min-width:769px){.ast-container{max-width:1240px;}}@font-face {font-family: "Astra";src: url(https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/fonts/astra.woff) format("woff"),url(https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/fonts/astra.ttf) format("truetype"),url(https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/fonts/astra.svg#astra) format("svg");font-weight: normal;font-style: normal;font-display: fallback;}@media (max-width:768px) {.main-header-bar .main-header-bar-navigation{display:none;}}.ast-desktop .main-header-menu.submenu-with-border .sub-menu,.ast-desktop .main-header-menu.submenu-with-border .astra-full-megamenu-wrapper{border-color:#29d8db;}.ast-desktop .main-header-menu.submenu-with-border .sub-menu{border-top-width:2px;border-right-width:0px;border-left-width:0px;border-bottom-width:0px;border-style:solid;}.ast-desktop .main-header-menu.submenu-with-border .sub-menu .sub-menu{top:-2px;}.ast-desktop .main-header-menu.submenu-with-border .sub-menu .menu-link,.ast-desktop .main-header-menu.submenu-with-border .children .menu-link{border-bottom-width:0px;border-style:solid;border-color:#eaeaea;}@media (min-width:769px){.main-header-menu .sub-menu .menu-item.ast-left-align-sub-menu:hover > .sub-menu,.main-header-menu .sub-menu .menu-item.ast-left-align-sub-menu.focus > .sub-menu{margin-left:-0px;}}.ast-small-footer{border-top-style:solid;border-top-width:1px;border-top-color:rgba(221,221,221,0.8);}.ast-small-footer-wrap{text-align:center;}@media (max-width:920px){.ast-404-layout-1 .ast-404-text{font-size:100px;font-size:6.25rem;}}.ast-breadcrumbs .trail-browse,.ast-breadcrumbs .trail-items,.ast-breadcrumbs .trail-items li{display:inline-block;margin:0;padding:0;border:none;background:inherit;text-indent:0;}.ast-breadcrumbs .trail-browse{font-size:inherit;font-style:inherit;font-weight:inherit;color:inherit;}.ast-breadcrumbs .trail-items{list-style:none;}.trail-items li::after{padding:0 0.3em;content:"\00bb";}.trail-items li:last-of-type::after{display:none;}h1,.entry-content h1,h2,.entry-content h2,h3,.entry-content h3,h4,.entry-content h4,h5,.entry-content h5,h6,.entry-content h6{color:#4a4a4a;}.elementor-widget-heading .elementor-heading-title{margin:0;}.ast-header-break-point .main-header-bar{border-bottom-width:0;}@media (min-width:769px){.main-header-bar{border-bottom-width:0;}}.ast-safari-browser-less-than-11 .main-header-menu .menu-item, .ast-safari-browser-less-than-11 .main-header-bar .ast-masthead-custom-menu-items{display:block;}.main-header-menu .menu-item, .main-header-bar .ast-masthead-custom-menu-items{-js-display:flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-moz-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column;}.main-header-menu > .menu-item > .menu-link{height:100%;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;-js-display:flex;display:flex;}.ast-primary-menu-disabled .main-header-bar .ast-masthead-custom-menu-items{flex:unset;}.header-main-layout-1 .ast-flex.main-header-container, .header-main-layout-3 .ast-flex.main-header-container{-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;}
+</style><link rel="stylesheet" id="astra-google-fonts-css" href="//fonts.googleapis.com/css?family=Work+Sans%3A400%2C%7CMontserrat%3A800%2C&display=fallback&ver=2.6.2" media="all"><link rel="stylesheet" id="astra-menu-animation-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/css/minified/menu-animation.min.css" media="all"><link rel="stylesheet" id="wp-block-library-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-includes/css/dist/block-library/style.min.css" media="all"><link rel="stylesheet" id="elementor-icons-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css" media="all"><link rel="stylesheet" id="elementor-animations-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/animations/animations.min.css" media="all"><link rel="stylesheet" id="elementor-frontend-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/css/frontend.min.css" media="all"><link rel="stylesheet" id="elementor-pro-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor-pro/assets/css/frontend.min.css" media="all"><link rel="stylesheet" id="font-awesome-5-all-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css" media="all"><link rel="stylesheet" id="font-awesome-4-shim-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css" media="all"><link rel="stylesheet" id="elementor-global-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/css/global.css" media="all"><link rel="stylesheet" id="elementor-post-711-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/css/post-711.css" media="all"><link rel="stylesheet" id="google-fonts-1-css" href="https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CProza+Libre%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CMontserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CQuestrial%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CArchivo%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&ver=5.6" media="all"><link rel="stylesheet" id="elementor-icons-shared-0-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css" media="all"><link rel="stylesheet" id="elementor-icons-fa-solid-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css" media="all"><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js" id="font-awesome-4-shim-js"></script><style>.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style id="wp-custom-css">
+			
+
+/** Start Block Kit CSS: 105-3-0fb64e69c49a8e10692d28840c54ef95 **/
+
+.envato-kit-102-phone-overlay {
+	position: absolute !important;
+	display: block !important;
+	top: 0%;
+	left: 0%;
+	right: 0%;
+	margin: auto;
+	z-index: 1;
+}
+
+/** End Block Kit CSS: 105-3-0fb64e69c49a8e10692d28840c54ef95 **/
+
+
+
+/** Start Block Kit CSS: 136-3-fc37602abad173a9d9d95d89bbe6bb80 **/
+
+.envato-block__preview{overflow: visible !important;}
+
+/** End Block Kit CSS: 136-3-fc37602abad173a9d9d95d89bbe6bb80 **/
+
+		</style><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"></head><body class="page-template page-template-elementor_canvas page page-id-711 ast-desktop ast-page-builder-template ast-no-sidebar astra-2.6.2 ast-header-custom-item-inside ast-single-post ast-inherit-site-logo-transparent elementor-default elementor-template-canvas elementor-kit-413 elementor-page elementor-page-711">
+			<div data-elementor-type="wp-page" data-elementor-id="711" class="elementor elementor-711" data-elementor-settings="[]">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section class="elementor-element elementor-element-52900cf elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="52900cf" data-element_type="section" id="welcome" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-no">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-1e41ca75 elementor-column elementor-col-100 elementor-top-column" data-id="1e41ca75" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-5b0c4bf5 elementor-invisible elementor-widget elementor-widget-heading" data-id="5b0c4bf5" data-element_type="widget" data-settings='{"_animation":"fadeIn"}' data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-xxl">Tutorial: Hosting A Small Business Website (Static) ON IBM Cloud</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1b9fe3e elementor-widget elementor-widget-divider" data-id="1b9fe3e" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-c171659 elementor-widget elementor-widget-spacer" data-id="c171659" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6bf5c6f7 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="6bf5c6f7" data-element_type="widget" data-settings='{"_animation":"fadeIn"}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>I deployed the site using a bucket in IBM’s Cloud Object Storage, and added a guest message board using Functions.<br>The process is super easy and you get a massive bang for your buck (In that you can deploy this for free).<br><br><br>I decided to create a dummy website for a BnB & hotel, you can view the hosted website here: <a href="http://tm-guestbook.s3-web.jp-tok.cloud-object-storage.appdomain.cloud/" target="_blank" rel="noopener">http://tm-guestbook.s3-web.jp-tok.cloud-object-storage.appdomain.cloud/</a><br><br><br>I’ll give you a quick tutorial on how to get it done, and offer a review of my overall experience.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-61b522d elementor-align-left elementor-invisible elementor-widget elementor-widget-button" data-id="61b522d" data-element_type="widget" data-settings='{"_animation":"fadeInUp","_animation_delay":800}' data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="#getstarted" class="elementor-button-link elementor-button elementor-size-md elementor-animation-sink" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon elementor-align-icon-right">
+				<i aria-hidden="true" class="fas fa-long-arrow-alt-down"></i>			</span>
+						<span class="elementor-button-text">Let's GO</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-54dde270 elementor-widget elementor-widget-spacer" data-id="54dde270" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-74c417da elementor-section-content-middle animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="74c417da" data-element_type="section" data-settings='{"background_background":"classic","sticky":"top","animation":"none","sticky_on":["desktop","tablet","mobile"],"sticky_offset":0,"sticky_effects_offset":0}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-4c7ab57a elementor-column elementor-col-100 elementor-top-column" data-id="4c7ab57a" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-1855244c elementor-nav-menu--stretch elementor-nav-menu__align-center elementor-nav-menu--dropdown-mobile animated-slow elementor-nav-menu--indicator-classic elementor-nav-menu__text-align-aside elementor-nav-menu--toggle elementor-nav-menu--burger elementor-invisible elementor-widget elementor-widget-nav-menu" data-id="1855244c" data-element_type="widget" data-settings='{"full_width":"stretch","_animation":"fadeIn","layout":"horizontal","toggle":"burger"}' data-widget_type="nav-menu.default">
+				<div class="elementor-widget-container">
+						<nav role="navigation" class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-underline e--animation-slow"><ul id="menu-1-1855244c" class="elementor-nav-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-774"><a class="menu-link elementor-item">Website Type</a>
+<ul class="sub-menu elementor-nav-menu--dropdown"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-775"><a href="https://thabisomak.github.io/websiteonibmcloud/wordpress/" class="menu-link elementor-sub-item">WordPress Using Kubernetes + Helm Chart</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-787"><a href="#" class="menu-link elementor-sub-item elementor-item-anchor">Static Using COS + Functions</a></li>
+</ul></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-777"><a href="#cloudant" class="menu-link elementor-item elementor-item-anchor">IBM Cloudant</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-778"><a href="#functions" class="menu-link elementor-item elementor-item-anchor">Creating Functions</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-779"><a href="#deploy" class="menu-link elementor-item elementor-item-anchor">Deploy The Site</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-780"><a href="#howitperforms" class="menu-link elementor-item elementor-item-anchor">How It Performs</a></li>
+</ul></nav><div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false">
+			<i class="eicon-menu-bar" aria-hidden="true"></i>
+			<span class="elementor-screen-only">Menu</span>
+		</div>
+			<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" role="navigation" aria-hidden="true"><ul id="menu-2-1855244c" class="elementor-nav-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-774"><a class="menu-link elementor-item">Website Type</a>
+<ul class="sub-menu elementor-nav-menu--dropdown"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-775"><a href="https://thabisomak.github.io/websiteonibmcloud/wordpress/" class="menu-link elementor-sub-item">WordPress Using Kubernetes + Helm Chart</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-787"><a href="#" class="menu-link elementor-sub-item elementor-item-anchor">Static Using COS + Functions</a></li>
+</ul></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-777"><a href="#cloudant" class="menu-link elementor-item elementor-item-anchor">IBM Cloudant</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-778"><a href="#functions" class="menu-link elementor-item elementor-item-anchor">Creating Functions</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-779"><a href="#deploy" class="menu-link elementor-item elementor-item-anchor">Deploy The Site</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-780"><a href="#howitperforms" class="menu-link elementor-item elementor-item-anchor">How It Performs</a></li>
+</ul></nav></div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-d18741c animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="d18741c" data-element_type="section" id="getstarted" data-settings='{"animation":"fadeIn","background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-a1e462a elementor-column elementor-col-100 elementor-top-column" data-id="a1e462a" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-86820de elementor-widget elementor-widget-heading" data-id="86820de" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Getting Started</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-20a8dc0 elementor-widget elementor-widget-divider" data-id="20a8dc0" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-db1590f elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="db1590f" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-a49bf6b elementor-column elementor-col-50 elementor-inner-column" data-id="a49bf6b" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-551a985 elementor-widget elementor-widget-heading" data-id="551a985" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">Create Your Free IBM Cloud Account</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-90c04cc elementor-invisible elementor-widget elementor-widget-text-editor" data-id="90c04cc" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>This is the first thing you need to do. Visit https://cloud.ibm.com and set up your free IBM Cloud account. You’ll have access to over 40 of their services without having to enter your credit card details. If you haven’t created an account yet, click on the link below and get started.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-7f0e737 elementor-align-right elementor-mobile-align-center animated-fast elementor-invisible elementor-widget elementor-widget-button" data-id="7f0e737" data-element_type="widget" data-settings='{"_animation":"fadeInUp","_animation_delay":150}' data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="https://cloud.ibm.com/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm elementor-animation-grow" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Create Account</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-71f6f85 elementor-column elementor-col-50 elementor-inner-column" data-id="71f6f85" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-900a4c9 animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="900a4c9" data-element_type="widget" data-settings='{"_animation":"zoomIn"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="665" height="613" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Create-Cloud-Account.png" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Create-Cloud-Account.png 665w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Create-Cloud-Account-300x277.png 300w" sizes="(max-width: 665px) 100vw, 665px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-d625bb5 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="d625bb5" data-element_type="section" id="cloudant" data-settings='{"animation":"fadeIn","background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-9cb3dea elementor-column elementor-col-100 elementor-top-column" data-id="9cb3dea" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-caea710 elementor-widget elementor-widget-heading" data-id="caea710" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Create an IBM Cloudant Service</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4ea49e3 elementor-widget elementor-widget-divider" data-id="4ea49e3" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-d2b694a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="d2b694a" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-24de5d7 elementor-column elementor-col-100 elementor-inner-column" data-id="24de5d7" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-ac372d8 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="ac372d8" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><strong>So What on earth is a Cloudant? </strong> Here’s a super-quick summary.
+<br><br>
+IBM Cloudant is a distributed database that is optimized for handling heavy workloads that are typical of large, fast-growing web and mobile apps. You can download it straight from your IBM Cloud Catalog, or as an on-premises installation.
+<br><br>
+The API and replication protocol are compatible with an open source ecosystem that includes Apache CouchDB, PouchDB and libraries for the most popular web and mobile development stacks.
+<br><br><strong>Ok….So what am I using it for?</strong>
+<br><br>
+In this tutorial, it’s used to create the database for the message board.
+<br><br>
+Got it? If not, read more <strong><a href="https://www.ibm.com/za-en/cloud/cloudant" target="_blank" rel="noopener">here</a></strong></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-4834497 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="4834497" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><strong>Follow the steps below to get started</strong></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-60b47c67 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="60b47c67" data-element_type="section" id="pricing" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-f4fc7ef elementor-column elementor-col-100 elementor-top-column" data-id="f4fc7ef" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-52004a36 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="52004a36" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-74db7de1 elementor-column elementor-col-50 elementor-inner-column" data-id="74db7de1" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-84e8e48 elementor-widget elementor-widget-heading" data-id="84e8e48" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">1</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-2bf12be3 elementor-column elementor-col-50 elementor-inner-column" data-id="2bf12be3" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-37fbf847 elementor-widget elementor-widget-heading" data-id="37fbf847" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Creating The Database.</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1eb3e0f5 elementor-widget elementor-widget-text-editor" data-id="1eb3e0f5" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">1) In your IBM Cloud console, click on <strong>Catalog. </strong>
+
+Under <strong>Services, </strong>select <strong>Databases </strong>and click on<strong> Cloudant.</strong></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-b990e2c elementor-arrows-position-outside elementor-pagination-position-outside elementor-widget elementor-widget-image-carousel" data-id="b990e2c" data-element_type="widget" data-settings='{"slides_to_show":"1","navigation":"both","autoplay":"yes","pause_on_hover":"yes","pause_on_interaction":"yes","autoplay_speed":5000,"infinite":"yes","effect":"slide","speed":500,"direction":"ltr"}' data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper">
+				<div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="b990e2c" data-elementor-lightbox-title="1 - Navigate To Catalog" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/1-Navigate-To-Catalog.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/1-Navigate-To-Catalog-ozy5oxpyrgoqy2t4u87r6v8mu2y2cjw3sv4gu8unqa.png" alt="1 - Navigate To Catalog"></figure></a></div><div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="b990e2c" data-elementor-lightbox-title="Go To Cloudant" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Go-To-Cloudant.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Go-To-Cloudant-ozy5ozln54rblaqej910burk0uosry3kh4ffssrvh6.png" alt="Go To Cloudant"></figure></a></div>			</div>
+												<div class="swiper-pagination"></div>
+													<div class="elementor-swiper-button elementor-swiper-button-prev">
+						<i class="eicon-chevron-left" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Previous</span>
+					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next">
+						<i class="eicon-chevron-right" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Next</span>
+					</div>
+									</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-4972f4d elementor-widget elementor-widget-text-editor" data-id="4972f4d" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>2) Select your region Under <strong>Multitenant</strong> </p><p>3) Under <strong>Configure Cloudant instance</strong> pick a unique name. For this tutorial, I’ll use <strong>tm-guestbook-db</strong></p><p>4) Leave the resource group as <strong>default)</strong></p><p>5) For the Authentication Method, select <strong>IAM and legacy credentials</strong></p><p>6) Leave your plan as <strong>Lite </strong></p><p>7) Click <strong>Create</strong></p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-8eaa7ac elementor-widget elementor-widget-premium-addon-modal-box" data-id="8eaa7ac" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-8eaa7ac" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Click to see my Cloudant Setup</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-8eaa7ac" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p><img loading="lazy" class="aligncenter wp-image-723 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/screencapture-cloud-ibm-catalog-services-cloudant-2020-12-16-13_45_18.png" alt="" width="1374" height="1786" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/screencapture-cloud-ibm-catalog-services-cloudant-2020-12-16-13_45_18.png 1374w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/screencapture-cloud-ibm-catalog-services-cloudant-2020-12-16-13_45_18-231x300.png 231w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/screencapture-cloud-ibm-catalog-services-cloudant-2020-12-16-13_45_18-788x1024.png 788w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/screencapture-cloud-ibm-catalog-services-cloudant-2020-12-16-13_45_18-768x998.png 768w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/screencapture-cloud-ibm-catalog-services-cloudant-2020-12-16-13_45_18-1182x1536.png 1182w" sizes="(max-width: 1374px) 100vw, 1374px"></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-8eaa7ac .premium-modal-box-modal-dialog {
+                width: 90%            }
+            }        </style></div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-6887f9f1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="6887f9f1" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-40b1a7e elementor-column elementor-col-100 elementor-top-column" data-id="40b1a7e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-25e8ef1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="25e8ef1" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-e203a70 elementor-column elementor-col-50 elementor-inner-column" data-id="e203a70" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-5812dd2 elementor-widget elementor-widget-heading" data-id="5812dd2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">2</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-81f391e elementor-column elementor-col-50 elementor-inner-column" data-id="81f391e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-9abe7c8 elementor-widget elementor-widget-heading" data-id="9abe7c8" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Go To Your Resource List</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-d968fb8 elementor-widget elementor-widget-text-editor" data-id="d968fb8" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">1) On your Console, click on the menu and navigate to <strong>Resource List</strong>. Under Services, click on your newly created Cloudant instance
+<br><br>
+2) On the instance’s page, click on <strong>Launch Dashboard. </strong>This will open the Cloudant Dashboard in a new tab</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6559fcc elementor-arrows-position-outside elementor-pagination-position-outside elementor-widget elementor-widget-image-carousel" data-id="6559fcc" data-element_type="widget" data-settings='{"slides_to_show":"1","navigation":"both","autoplay":"yes","pause_on_hover":"yes","pause_on_interaction":"yes","autoplay_speed":5000,"infinite":"yes","effect":"slide","speed":500,"direction":"ltr"}' data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper">
+				<div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="6559fcc" data-elementor-lightbox-title="Resource List" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Resource-List-1.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Resource-List-1-ozy6rf82l9debawm3v3ua5m2g193ieogfcq683scyq.png" alt="Resource List"></figure></a></div><div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="6559fcc" data-elementor-lightbox-title="Launch Dashboard" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Launch-Dashboard.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Launch-Dashboard-ozy6yqevqvdom4abf0vdob74rx7vdnparje4lky4gw.png" alt="Launch Dashboard"></figure></a></div>			</div>
+												<div class="swiper-pagination"></div>
+													<div class="elementor-swiper-button elementor-swiper-button-prev">
+						<i class="eicon-chevron-left" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Previous</span>
+					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next">
+						<i class="eicon-chevron-right" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Next</span>
+					</div>
+									</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-347a291 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="347a291" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-a421278 elementor-column elementor-col-100 elementor-top-column" data-id="a421278" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-3a88ab5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="3a88ab5" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-fad686c elementor-column elementor-col-50 elementor-inner-column" data-id="fad686c" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-b59f96e elementor-widget elementor-widget-heading" data-id="b59f96e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">3</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-b74131f elementor-column elementor-col-50 elementor-inner-column" data-id="b74131f" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-8da0cb1 elementor-widget elementor-widget-heading" data-id="8da0cb1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Cloudant Dashboard</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-75ec7a9 elementor-widget elementor-widget-text-editor" data-id="75ec7a9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>This is where you will create the database.<br><br><br>1) In the Top Right coner, click on <strong>Create Database.</strong><br>2) Save the name as <strong>guestbook</strong>, and choose <strong>Non-Partitioned</strong> under the Partitioning tab</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-f5bb213 elementor-arrows-position-outside elementor-pagination-position-outside elementor-widget elementor-widget-image-carousel" data-id="f5bb213" data-element_type="widget" data-settings='{"slides_to_show":"1","navigation":"both","autoplay":"yes","pause_on_hover":"yes","pause_on_interaction":"yes","autoplay_speed":5000,"infinite":"yes","effect":"slide","speed":500,"direction":"ltr"}' data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper">
+				<div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="f5bb213" data-elementor-lightbox-title="Create Database" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Create-Database.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Create-Database-ozy7e8r0igm06hrauq7rteaxmsrwdv9uwawjnxy8o2.png" alt="Create Database"></figure></a></div><div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="f5bb213" data-elementor-lightbox-title="Create Database 2" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Create-Database-2.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Create-Database-2-ozy7e9oupanai3pxp8medw2e86n9lkdl8fk157x0t2.png" alt="Create Database 2"></figure></a></div>			</div>
+												<div class="swiper-pagination"></div>
+													<div class="elementor-swiper-button elementor-swiper-button-prev">
+						<i class="eicon-chevron-left" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Previous</span>
+					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next">
+						<i class="eicon-chevron-right" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Next</span>
+					</div>
+									</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-317d161 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="317d161" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-143f388 elementor-column elementor-col-50 elementor-inner-column" data-id="143f388" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-d0bdbbf elementor-column elementor-col-50 elementor-inner-column" data-id="d0bdbbf" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-dee9a06 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="dee9a06" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-6412f3d elementor-column elementor-col-100 elementor-top-column" data-id="6412f3d" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-7882458 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="7882458" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-34a1f05 elementor-column elementor-col-50 elementor-inner-column" data-id="34a1f05" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-205ddcd elementor-widget elementor-widget-heading" data-id="205ddcd" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">4</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-d14a258 elementor-column elementor-col-50 elementor-inner-column" data-id="d14a258" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-ed41723 elementor-widget elementor-widget-heading" data-id="ed41723" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Credentials</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-2f18f42 elementor-widget elementor-widget-text-editor" data-id="2f18f42" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Switch back to the browser tab with the service dashboard page. and click on the <strong>Service Credentials</strong> tab.<br><br><br>1) Click on <strong>New Credential</strong></p><p>2) Set the name to <strong>for-guestbook </strong>and leave the role as <strong>Manager</strong>.</p><p>3) Click <strong>Add</strong></p><p>4) Expand the newly created credentials and review them. You’ll need them later</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-14dd39a elementor-arrows-position-outside elementor-pagination-position-outside elementor-widget elementor-widget-image-carousel" data-id="14dd39a" data-element_type="widget" data-settings='{"slides_to_show":"1","navigation":"both","autoplay":"yes","pause_on_hover":"yes","pause_on_interaction":"yes","autoplay_speed":5000,"infinite":"yes","effect":"slide","speed":500,"direction":"ltr"}' data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper">
+				<div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="14dd39a" data-elementor-lightbox-title="New Credentials" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/New-Credentials.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/New-Credentials-ozy7rffidsnt1klsuxedakipmds9d0mb1kcr0oefsa.png" alt="New Credentials"></figure></a></div><div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="14dd39a" data-elementor-lightbox-title="create credential" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/create-credential.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/create-credential-ozy7uqt0hr7801sehuzzl8e92bfviks7tz7eythh0k.png" alt="create credential"></figure></a></div>			</div>
+												<div class="swiper-pagination"></div>
+													<div class="elementor-swiper-button elementor-swiper-button-prev">
+						<i class="eicon-chevron-left" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Previous</span>
+					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next">
+						<i class="eicon-chevron-right" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Next</span>
+					</div>
+									</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-96880f5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="96880f5" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-4ba8c99 elementor-column elementor-col-50 elementor-inner-column" data-id="4ba8c99" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-b4a782d elementor-column elementor-col-50 elementor-inner-column" data-id="b4a782d" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-37416c8 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="37416c8" data-element_type="section" id="functions" data-settings='{"animation":"fadeIn"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-15e03a2 elementor-column elementor-col-100 elementor-top-column" data-id="15e03a2" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-0815ee5 elementor-widget elementor-widget-heading" data-id="0815ee5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Create Functions</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-509bb29 elementor-widget elementor-widget-divider" data-id="509bb29" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-72c0a05 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="72c0a05" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-5ca710f elementor-column elementor-col-100 elementor-inner-column" data-id="5ca710f" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-b1d8653 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="b1d8653" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">Next, you will have to create serverless actions (or <strong>Functions</strong>).
+
+<br><br><strong>What is IBM Cloud Functions?</strong>
+
+<br><br>
+
+Based on Apache OpenWhisk, IBM Cloud™ Functions is a polyglot functions-as-a-service (FaaS) programming platform for developing lightweight code that scalably executes on demand.
+<br><br><strong>How will I be using Functions?</strong> <br><br>
+
+You will be creating a sequence which is a chain of actions. In a sequence, the output of one action acts as input to the following action and so on. </div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-a92b058 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="a92b058" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-e25846e elementor-column elementor-col-100 elementor-top-column" data-id="e25846e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-b085b3f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="b085b3f" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-31d54ec elementor-column elementor-col-50 elementor-inner-column" data-id="31d54ec" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-dcaff6b elementor-widget elementor-widget-heading" data-id="dcaff6b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">5</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-d2d9947 elementor-column elementor-col-50 elementor-inner-column" data-id="d2d9947" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-18ee342 elementor-widget elementor-widget-heading" data-id="18ee342" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Creating the First Action</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6da01b4 elementor-widget elementor-widget-text-editor" data-id="6da01b4" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>1) In your IBM Cloud Console, Click on the menu dropdown and navigate to <strong>Functions</strong><br><br>2) From the namespace drop-down, either select an existing namespace or use Create Namespace to create a new one.<br>3) On the side menu, select <strong>Actions</strong><br>4) on the Actions page, click <strong>Create.</strong></p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-970f183 elementor-arrows-position-outside elementor-pagination-position-outside elementor-widget elementor-widget-image-carousel" data-id="970f183" data-element_type="widget" data-settings='{"slides_to_show":"1","navigation":"both","autoplay":"yes","pause_on_hover":"yes","pause_on_interaction":"yes","autoplay_speed":5000,"infinite":"yes","effect":"slide","speed":500,"direction":"ltr"}' data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper">
+				<div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="970f183" data-elementor-lightbox-title="Functions" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Functions.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Functions-ozy8q8edfyb0xs1smh024ac5h08jdjsi5tyzqiso50.png" alt="Functions"></figure></a></div><div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="970f183" data-elementor-lightbox-title="Actions" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Actions.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Actions-ozy8whzn06vuc6y416iiqpes1hcmowo30ujiwxi652.png" alt="Actions"></figure></a></div>			</div>
+												<div class="swiper-pagination"></div>
+													<div class="elementor-swiper-button elementor-swiper-button-prev">
+						<i class="eicon-chevron-left" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Previous</span>
+					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next">
+						<i class="eicon-chevron-right" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Next</span>
+					</div>
+									</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-b422e2d elementor-widget elementor-widget-text-editor" data-id="b422e2d" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>5) Create a new action with the following settings</p><ul><li>Name as <strong>prepare-entry-for-save</strong></li><li>Click Create Package and set the package name as <strong>guestbook</strong></li><li>Set Runtime as the latest<strong> Node.js</strong></li><li><strong>Click Create</strong></li></ul><p> </p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-3928b1c elementor-widget elementor-widget-image" data-id="3928b1c" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+							<figure class="wp-caption"><a href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/create-action.png" data-elementor-open-lightbox="yes" data-elementor-lightbox-title="create action">
+							<img src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/create-action-ozy96ccskqcxx6ndjxovcpzjzqu0asqw1khku8wruo.png" title="create action" alt="create action"></a>
+											<figcaption class="widget-image-caption wp-caption-text"></figcaption></figure></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-1272c10 elementor-widget elementor-widget-text-editor" data-id="1272c10" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>6) In the page that appears next, add the below code and then click <strong>Save</strong></p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-0fcc17a elementor-widget elementor-widget-text-editor" data-id="0fcc17a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>/**<br>* Prepare the guestbook entry to be persisted<br>*/<br>function main(params) {<br>if (!params.name || !params.comment) {<br>return Promise.reject({ error: ‘no name or comment’});<br>}</p><p>return {<br>doc: {<br>createdAt: new Date(),<br>name: params.name,<br>email: params.email,<br>comment: params.comment<br>}<br>};<br>}</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-3c92208 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="3c92208" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-3243803 elementor-column elementor-col-100 elementor-top-column" data-id="3243803" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-626e92d elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="626e92d" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-cb62ff3 elementor-column elementor-col-50 elementor-inner-column" data-id="cb62ff3" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-fe6cc0a elementor-widget elementor-widget-heading" data-id="fe6cc0a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">6</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-a3d8492 elementor-column elementor-col-50 elementor-inner-column" data-id="a3d8492" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-b2d5a7d elementor-widget elementor-widget-heading" data-id="b2d5a7d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Add the Action To a Sequence:</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-345ee84 elementor-widget elementor-widget-text-editor" data-id="345ee84" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>On the same page, on the left select <strong>Enclosing Sequences</strong> and then <strong>Add To Sequence</strong>.</p><p>2) Set the new sequence name to <strong>save-guestbook-entry-sequence</strong></p><p>3) Choose <strong>guestlist</strong> as the enclosing package and click <strong>Create and Add</strong></p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-ebf9606 elementor-widget elementor-widget-image" data-id="ebf9606" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+							<figure class="wp-caption"><a href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Add-To-Sequence.png" data-elementor-open-lightbox="yes" data-elementor-lightbox-title="Add To Sequence">
+							<img src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Add-To-Sequence-ozy9soyn2wydze6n1lhin2y4hko7bph4g6x7n3rrui.png" title="Add To Sequence" alt="Add To Sequence"></a>
+											<figcaption class="widget-image-caption wp-caption-text"></figcaption></figure></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-c551ab8 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="c551ab8" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-71d64d5 elementor-column elementor-col-50 elementor-inner-column" data-id="71d64d5" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-5bd01bf elementor-column elementor-col-50 elementor-inner-column" data-id="5bd01bf" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-99ad5c2 elementor-widget elementor-widget-heading" data-id="99ad5c2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Add a Second Action To a Sequence:</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4fc7fb1 elementor-widget elementor-widget-text-editor" data-id="4fc7fb1" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>4) On the sequence page, click on the entry <strong>save-guestbook-entry-sequence</strong>. It opens sequence details. Then click <strong>Add</strong> on the upper right.<br>5)Instead of <strong>Create New</strong> select <strong>Use Public</strong>.</p><p>6) Pick Cloudant from the options loaded</p><p>7) Under <strong>Actions</strong>, select <strong>Create Document</strong></p><p>8) Create a <strong>New Binding</strong> with the following details</p><ul><li>Set Name as <strong>binding-for-guestbook</strong></li><li>For <strong>Instance</strong> select your instance, for the credentials <strong>for-guestbook</strong> as created earlier, and as <strong>Database</strong> pick <strong>guestbook</strong>.</li><li>Click <strong>Add </strong>and Pres <strong>Save</strong></li></ul></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-d2740e0 elementor-widget elementor-widget-image" data-id="d2740e0" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+							<figure class="wp-caption"><a href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Action2.png" data-elementor-open-lightbox="yes" data-elementor-lightbox-title="Action2">
+							<img src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Action2-ozyaijiv0wc99cmy3rq67k4gl19l023e04rwr1g2j8.png" title="Action2" alt="Action2"></a>
+											<figcaption class="widget-image-caption wp-caption-text"></figcaption></figure></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-1498c85 elementor-widget elementor-widget-text-editor" data-id="1498c85" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>To test the entire sequence, click on <strong>Invoke with parameters</strong> and enter the JSON below and then click <b>Invoke</b></p><div class="codeAreaWrapper"> </div></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-62da74f elementor-widget elementor-widget-text-editor" data-id="62da74f" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>{<br>“name”: “John Smith”,<br>“email”: “john@smith.com”,<br>“comment”: “this is my comment”<br>}</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-869f134 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="869f134" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-0b3361e elementor-column elementor-col-100 elementor-top-column" data-id="0b3361e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-3eb4cd5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="3eb4cd5" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-fbb4f09 elementor-column elementor-col-100 elementor-top-column" data-id="fbb4f09" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-ef11305 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="ef11305" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-848dfb2 elementor-column elementor-col-50 elementor-inner-column" data-id="848dfb2" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-a645799 elementor-widget elementor-widget-heading" data-id="a645799" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">7</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-c47ff7c elementor-column elementor-col-50 elementor-inner-column" data-id="c47ff7c" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-6df63c1 elementor-widget elementor-widget-heading" data-id="6df63c1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Sequence of Actions to Retrieve Entries</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-e942fc8 elementor-widget elementor-widget-text-editor" data-id="e942fc8" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>1) Under <strong>Functions</strong>, click on <strong>Actions</strong> and then <strong>Create</strong>.</p><p>2) Create an <strong>Action </strong>with <strong>set-read-input</strong> as the name. Select <strong>guestbook</strong> as package and the latest version of <strong>Node.js</strong> as runtime.</p><p>3) Click <strong>Create</strong>.</p><p>4) In the action details, replace the existing code with the code snippet below. This action passes the appropriate parameters to the next action in the sequence.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-c2df3f7 elementor-widget elementor-widget-text-editor" data-id="c2df3f7" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>function main(params) {<br>return {<br>params: {<br>include_docs: true<br>}<br>};<br>}</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-575fa85 elementor-widget elementor-widget-text-editor" data-id="575fa85" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>5) Click <strong>Save</strong></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-cbedee4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="cbedee4" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-007440e elementor-column elementor-col-100 elementor-top-column" data-id="007440e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-316d23f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="316d23f" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-290c083 elementor-column elementor-col-50 elementor-inner-column" data-id="290c083" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-1b7ec20 elementor-widget elementor-widget-heading" data-id="1b7ec20" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">8</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-8f5ddf7 elementor-column elementor-col-50 elementor-inner-column" data-id="8f5ddf7" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-c240d6a elementor-widget elementor-widget-heading" data-id="c240d6a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Add the Action To a Sequence:</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-48dee20 elementor-widget elementor-widget-text-editor" data-id="48dee20" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">1)On the same page, on the left select <strong>Enclosing Sequences</strong> and then <strong>Add To Sequence</strong>.
+<br><br>
+2) Set the new sequence name to <strong>read-guestbook-entries-sequence</strong>
+<br><br>
+3) Choose <strong>guestlist</strong> as the enclosing package and click <strong>Create and Add</strong>
+<br><br>
+4) On the sequence page, Click on <strong>read-guestbook-entries-sequence</strong> sequence and then click <strong>Add</strong> to create and add the second action to get documents from IBM Cloudant.
+<br><br>
+5)Instead of <strong>Create New</strong> select <strong>Use Public</strong>.
+<br><br>
+6) Pick Cloudant from the options loaded
+<br><br>
+7) Under <strong>Actions</strong>, select <strong>List Document</strong>
+<br><br>
+8) Under Bindings select <strong>binding-for-guestbook </strong>and <strong>click Add </strong>to create and add this public action to your sequence.
+<br><br>
+9) Click <strong>Add </strong>again to add a third action. This one will format the documents from IBM Cloudant.
+<br><br>
+10) Under <strong>Create New</strong> enter <strong>format-entries</strong> as the name
+<br><br>
+11) Select <strong>guestbook</strong> for the Enclosing Package and then click <strong>Create and Add</strong>.
+<br><br>
+12) Click on <strong>format-entries</strong> and replace the code with below:
+<div class="codeAreaWrapper"></div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-ed989bf elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="ed989bf" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-cc6de4f elementor-column elementor-col-50 elementor-inner-column" data-id="cc6de4f" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-aafc371 elementor-column elementor-col-50 elementor-inner-column" data-id="aafc371" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-ca631a2 elementor-widget elementor-widget-premium-addon-modal-box" data-id="ca631a2" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-ca631a2" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Click to See Code</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-ca631a2" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <a>const md5 = require(‘spark-md5’);
+
+function main(params) {
+return {
+entries: params.rows.map((row) => { return {
+name: row.doc.name,
+email: row.doc.email,
+comment: row.doc.comment,
+createdAt: row.doc.createdAt,
+icon: (row.doc.email ? `https://secure.gravatar.com/avatar/${md5.hash(row.doc.email.trim().toLowerCase())}?s=64` : null)
+}})
+};
+}</a>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-ca631a2 .premium-modal-box-modal-dialog {
+                width: 85%            }
+            }        </style></div>
+				</div>
+				<div class="elementor-element elementor-element-455676c elementor-widget elementor-widget-text-editor" data-id="455676c" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">13) Click on <strong>Save</strong>.
+<br><br>
+14) Choose the sequence by clicking on <strong>Actions</strong> and then <strong>read-guestbook-entries-sequence</strong>.
+<br><br>
+15) Click on <strong>Save</strong> and then <strong>Invoke</strong>.</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-378bf5a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="378bf5a" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-2b94d9b elementor-column elementor-col-100 elementor-top-column" data-id="2b94d9b" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-fa7123c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="fa7123c" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-e34f906 elementor-column elementor-col-50 elementor-inner-column" data-id="e34f906" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-df098d8 elementor-widget elementor-widget-heading" data-id="df098d8" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">9</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-88853d6 elementor-column elementor-col-50 elementor-inner-column" data-id="88853d6" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-3a46b0d elementor-widget elementor-widget-heading" data-id="3a46b0d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Creating an API</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-dbc4e0d elementor-widget elementor-widget-text-editor" data-id="dbc4e0d" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>1) In your functions page, navigate to <strong>Actions</strong></p><p>2) Select the <strong>read-guestbook-entries-sequence</strong> sequence. Next to the name, click on <strong>Web Action</strong>, check <strong>Enable as Web Action</strong> and <strong>Save</strong>.</p><p>3) Do the same for the <strong>save-guestbook-entry-sequence</strong> sequence.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-b64bdca elementor-arrows-position-outside elementor-pagination-position-outside elementor-widget elementor-widget-image-carousel" data-id="b64bdca" data-element_type="widget" data-settings='{"slides_to_show":"1","navigation":"both","autoplay":"yes","pause_on_hover":"yes","pause_on_interaction":"yes","autoplay_speed":5000,"infinite":"yes","effect":"slide","speed":500,"direction":"ltr"}' data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper">
+				<div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="b64bdca" data-elementor-lightbox-title="Web Action" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Web-Action.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Web-Action-ozybz4ltd8bqs0951i0spaesz22tmguskentabh45g.png" alt="Web Action"></figure></a></div><div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="b64bdca" data-elementor-lightbox-title="Web Action 2" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Web-Action-2.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Web-Action-2-ozybz5jnk2d13m7rw0ff9s69kfy6u5yiwjbarlfpmq.png" alt="Web Action 2"></figure></a></div>			</div>
+												<div class="swiper-pagination"></div>
+													<div class="elementor-swiper-button elementor-swiper-button-prev">
+						<i class="eicon-chevron-left" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Previous</span>
+					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next">
+						<i class="eicon-chevron-right" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Next</span>
+					</div>
+									</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-32b11cb elementor-widget elementor-widget-text-editor" data-id="32b11cb" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">5) Set the API name to <strong>guestbook</strong> and, accordingly, the base path to <strong>/guestbook.</strong>
+<br><br>
+6) Click on <strong>Create operation</strong> and create an operation to retrieve entries with the following details:
+<ul><li>Set path to <strong>/entries</strong></li>
+ 	<li>Set verb to <strong>GET</strong></li>
+ 	<li>Select the <strong>read-guestbook-entries-sequence</strong> action</li>
+</ul>
+7) Click on <strong>Create operation</strong> and create an operation to persist entries with the following details:
+<ul><li>Set path to <strong>/entries</strong></li>
+ 	<li>Set verb to <strong>PUT</strong></li>
+ 	<li>Select the <strong>save-guestbook-entry-sequence</strong> action</li>
+</ul><section id="section-serverless-api-webapp-6" data-tutorial-type="step">8) Scroll to the end of the page to <strong>Create</strong> the API.
+
+<strong>Make note of the provided route, as you will use it from your web application.</strong>
+
+</section><section id="section-serverless-api-webapp-7" data-tutorial-type="step"><h2></h2>
+</section></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-60c8a74 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="60c8a74" data-element_type="section" id="deploy" data-settings='{"animation":"fadeIn","background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-109b840 elementor-column elementor-col-100 elementor-top-column" data-id="109b840" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-3387348 elementor-widget elementor-widget-heading" data-id="3387348" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Deploy The Website</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-91e6ff6 elementor-widget elementor-widget-divider" data-id="91e6ff6" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-3377892 elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="3377892" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-1be31b7 elementor-column elementor-col-100 elementor-inner-column" data-id="1be31b7" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-ebd1e07 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="ebd1e07" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Time for the fun part. Next you will be creating a Object Storage bucket configured with static website hosting containing the website files and the and message board javascript application that uses the cloudant database.</p><p>Follow the steps below</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-669dde2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="669dde2" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-28021ee elementor-column elementor-col-100 elementor-top-column" data-id="28021ee" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-c06bc51 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="c06bc51" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-72736d3 elementor-column elementor-col-50 elementor-inner-column" data-id="72736d3" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-f3be328 elementor-widget elementor-widget-heading" data-id="f3be328" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">10</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-06c2030 elementor-column elementor-col-50 elementor-inner-column" data-id="06c2030" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-e893183 elementor-widget elementor-widget-heading" data-id="e893183" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Create Cloud Object Storage</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-2103c99 elementor-widget elementor-widget-text-editor" data-id="2103c99" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>1) Click on <b>Catalog </b>and Search for <b>Cloud Object Storage</b></p><p>2) Chose a <strong>unique</strong> service name for the instance. For this tutorial, I chose<strong> tm-guestbook-cos</strong></p><p>3) Select the default resource group</p><p>4) <span style="font-size: 16px;">Click </span><strong style="font-size: 16px;">Create</strong></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-958d37b elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="958d37b" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-073b32c elementor-column elementor-col-100 elementor-top-column" data-id="073b32c" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-c985ceb elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="c985ceb" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-f242347 elementor-column elementor-col-50 elementor-inner-column" data-id="f242347" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-17edc85 elementor-widget elementor-widget-heading" data-id="17edc85" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">11</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-e56e923 elementor-column elementor-col-50 elementor-inner-column" data-id="e56e923" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-dd593a1 elementor-widget elementor-widget-heading" data-id="dd593a1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Create a Bucket</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-db20dbc elementor-widget elementor-widget-text-editor" data-id="db20dbc" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>1) Click <strong>Create a bucket </strong>and select<strong> Customize Your Bucket</strong></p><p>2) Enter a bucket name that is unique is across all ibm accounts. I used<strong> tm-guestbook</strong></p><p>3) Choose the rest of your settings such as Resiliency and Location</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-858c3a9 elementor-widget elementor-widget-premium-addon-modal-box" data-id="858c3a9" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-858c3a9" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Click To See My Settings</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-858c3a9" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p><img loading="lazy" class="aligncenter wp-image-767 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Bucket-Settings.png" alt="" width="1102" height="606" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Bucket-Settings.png 1102w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Bucket-Settings-300x165.png 300w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Bucket-Settings-1024x563.png 1024w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Bucket-Settings-768x422.png 768w" sizes="(max-width: 1102px) 100vw, 1102px"></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-858c3a9 .premium-modal-box-modal-dialog {
+                width: 85%            }
+            }        </style></div>
+				</div>
+				<div class="elementor-element elementor-element-668d8a6 elementor-widget elementor-widget-text-editor" data-id="668d8a6" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>4) Scroll down to the Static website hosting and click <strong>Add rule</strong></p><p>5) Keep the Routing rules (individual) selected and add the Index document <strong>index.html</strong></p><p>6) Click Public access to <strong>On </strong>and then click<strong> Save</strong></p><p>7) Scroll to the bottom and click <strong>Create bucket</strong></p><p> </p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-8ede43a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="8ede43a" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-04e7dab elementor-column elementor-col-100 elementor-top-column" data-id="04e7dab" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-acf95c4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="acf95c4" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-595339e elementor-column elementor-col-50 elementor-inner-column" data-id="595339e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-ede2083 elementor-widget elementor-widget-heading" data-id="ede2083" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">12</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-e6723aa elementor-column elementor-col-50 elementor-inner-column" data-id="e6723aa" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-a5fe6f5 elementor-widget elementor-widget-heading" data-id="a5fe6f5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Copy Website Files</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-e8b8b55 elementor-widget elementor-widget-text-editor" data-id="e8b8b55" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>1) Downoad the following code from <a href="https://github.com/IBM-Cloud/serverless-guestbook" target="_blank" rel="noopener">https://github.com/IBM-Cloud/serverless-guestbook</a></p><p>2) Edit <strong>guestbook.js</strong> – replace the value of <strong>apiUrl</strong> with the route you made a note of earlier when creating the API.</p><p>3) Copy the code in <strong>index.html</strong> and add it to your own index.html</p><p>4) Open the bucket <strong>Objects</strong> view and drag and drop the <strong>guestbook.js</strong> the <strong>index.html</strong> and the rest of your website files to the COS bucket</p><p>5) Navigate to the <strong>Configuration</strong> tab for the bucket and scroll down to the <strong>Static website hosting endpoints</strong> section to copy the <strong>Public</strong> endpoint into a browser tab</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-b877c06 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="b877c06" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-d7328c6 elementor-column elementor-col-100 elementor-top-column" data-id="d7328c6" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-5d48866 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="5d48866" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-6662118 elementor-column elementor-col-100 elementor-inner-column" data-id="6662118" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-854f6e4 elementor-widget elementor-widget-heading" data-id="854f6e4" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">That's It. You should now be able to access your Website through your browser!</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6272a80 elementor-widget elementor-widget-text-editor" data-id="6272a80" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p><span style="text-decoration: underline;"><strong>NOTE</strong> </span>If you would like to link your own domain, Follow this tutorial: <a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-routing-rules-cos" target="_blank" rel="noopener">https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-routing-rules-cos</a></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-7d9c0c82 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle elementor-section elementor-top-section" data-id="7d9c0c82" data-element_type="section" id="howitperforms" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-53bdba31 elementor-column elementor-col-50 elementor-top-column" data-id="53bdba31" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-20d20f0f elementor-widget elementor-widget-heading" data-id="20d20f0f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">How The IBM Cloud Performs</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-77a9bac elementor-widget elementor-widget-heading" data-id="77a9bac" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">A review of my overall experience with the IBM Cloud service</h4>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-5df01019 elementor-column elementor-col-50 elementor-top-column" data-id="5df01019" data-element_type="column">
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-44fcadbe elementor-reverse-tablet elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="44fcadbe" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-1e2efe37 elementor-column elementor-col-100 elementor-top-column" data-id="1e2efe37" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-1664e4bc elementor-widget elementor-widget-heading" data-id="1664e4bc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Speed</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-c179099 elementor-widget elementor-widget-divider" data-id="c179099" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-2a758414 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="2a758414" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>As expected, the IBM Cloud  COS + Functions setup is pretty quick. Tested across multiple locations it performs well and generally better than the WordPress+ Kub setup (but not by much). Since this is a static site it loads pretty fast and you rarely have any lag</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-faa5f48 elementor-star-rating-mobile--align-center elementor--star-style-star_fontawesome elementor-widget elementor-widget-star-rating" data-id="faa5f48" data-element_type="widget" data-widget_type="star-rating.default">
+				<div class="elementor-widget-container">
+			
+		<div class="elementor-star-rating__wrapper">
+							<div class="elementor-star-rating__title">My Rating: </div>
+						<div class="elementor-star-rating" title="4/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-empty"></i> <span itemprop="ratingValue" class="elementor-screen-only">4/5</span></div>		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-400fc9e1 elementor-column elementor-col-100 elementor-top-column" data-id="400fc9e1" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-10741049 animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="10741049" data-element_type="widget" data-settings='{"_animation":"fadeInLeft"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="623" height="374" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Cos-Speed-Test.png" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Cos-Speed-Test.png 623w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Cos-Speed-Test-300x180.png 300w" sizes="(max-width: 623px) 100vw, 623px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-e97f6de elementor-reverse-tablet elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="e97f6de" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-0bc2245 elementor-column elementor-col-100 elementor-top-column" data-id="0bc2245" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-91b4b5e animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="91b4b5e" data-element_type="widget" data-settings='{"_animation":"fadeInLeft"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="640" height="427" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/nine-koepfer-fYTSQ7B8Q8Y-unsplash.jpg" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/nine-koepfer-fYTSQ7B8Q8Y-unsplash.jpg 640w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/nine-koepfer-fYTSQ7B8Q8Y-unsplash-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-d07c011 elementor-column elementor-col-100 elementor-top-column" data-id="d07c011" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-23075c3 elementor-widget elementor-widget-heading" data-id="23075c3" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Reliability</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-606d512 elementor-widget elementor-widget-divider" data-id="606d512" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6870a77 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="6870a77" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Similarly as with the WordPress site, I haven’t had much time to really test the reliability of the Cloud services I used here, however I do expect them to be just as reliable as other IBM Services in general.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-0526fef elementor--star-style-star_fontawesome elementor-widget elementor-widget-star-rating" data-id="0526fef" data-element_type="widget" data-widget_type="star-rating.default">
+				<div class="elementor-widget-container">
+			
+		<div class="elementor-star-rating__wrapper">
+							<div class="elementor-star-rating__title">My Rating: Provisional</div>
+						<div class="elementor-star-rating" title="5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i> <span itemprop="ratingValue" class="elementor-screen-only">5/5</span></div>		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-b7bb51f elementor-reverse-tablet elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="b7bb51f" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-052b477 elementor-column elementor-col-100 elementor-top-column" data-id="052b477" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-54a10bc elementor-widget elementor-widget-heading" data-id="54a10bc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Usability</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-458c842 elementor-widget elementor-widget-divider" data-id="458c842" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-bd512b5 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="bd512b5" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Once you wrap your head around the concept of the COS and buckets, this setup is extremely simple. There are plenty of comprehensive guides that make it pretty easy to deploy your website. </p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-7c06648 elementor-star-rating-mobile--align-center elementor--star-style-star_fontawesome elementor-widget elementor-widget-star-rating" data-id="7c06648" data-element_type="widget" data-widget_type="star-rating.default">
+				<div class="elementor-widget-container">
+			
+		<div class="elementor-star-rating__wrapper">
+							<div class="elementor-star-rating__title">My Rating:</div>
+						<div class="elementor-star-rating" title="4/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-empty"></i> <span itemprop="ratingValue" class="elementor-screen-only">4/5</span></div>		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-c65bb67 elementor-column elementor-col-100 elementor-top-column" data-id="c65bb67" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-c99cbb6 animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="c99cbb6" data-element_type="widget" data-settings='{"_animation":"fadeInLeft"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="640" height="426" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-burst-374720.jpg" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-burst-374720.jpg 640w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-burst-374720-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-75a1dfa elementor-reverse-tablet elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="75a1dfa" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-a5b8fd6 elementor-column elementor-col-100 elementor-top-column" data-id="a5b8fd6" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-290a69e elementor-aspect-ratio-169 elementor-widget elementor-widget-video" data-id="290a69e" data-element_type="widget" data-settings='{"aspect_ratio":"169"}' data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-wrapper elementor-fit-aspect-ratio elementor-open-inline">
+					<video class="elementor-video" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Pexels-Videos-4287.mp4" autoplay="" loop="" playsinline="" controlslist="nodownload"></video></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-29aa01a elementor-column elementor-col-100 elementor-top-column" data-id="29aa01a" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-8f59d7f elementor-widget elementor-widget-heading" data-id="8f59d7f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Price</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-e62a108 elementor-widget elementor-widget-divider" data-id="e62a108" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-11fb0ef elementor-invisible elementor-widget elementor-widget-text-editor" data-id="11fb0ef" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Unlike my Kubernetes + WordPress deployment, Cloud Object Storage + Functions is pretty affordable. The setup I chose was free, and even an upgrade on your Bucket wouldn’t set you back too much. </p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-37cf216 elementor-star-rating-mobile--align-center elementor--star-style-star_fontawesome elementor-widget elementor-widget-star-rating" data-id="37cf216" data-element_type="widget" data-widget_type="star-rating.default">
+				<div class="elementor-widget-container">
+			
+		<div class="elementor-star-rating__wrapper">
+							<div class="elementor-star-rating__title">My Rating:</div>
+						<div class="elementor-star-rating" title="4/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-empty"></i> <span itemprop="ratingValue" class="elementor-screen-only">4/5</span></div>		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-5d95774 elementor-reverse-tablet elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="5d95774" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-853c686 elementor-column elementor-col-100 elementor-top-column" data-id="853c686" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-1ce9d98 elementor-widget elementor-widget-heading" data-id="1ce9d98" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Customer Support</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-009e973 elementor-widget elementor-widget-divider" data-id="009e973" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-68c2b2e elementor-invisible elementor-widget elementor-widget-text-editor" data-id="68c2b2e" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>I didn’t have to deal with any customer support during this deploy, but I know their support is fantastic. Their documentation is easy to follow and extremely detailed when it needs to be. For this, I think pretty much anyone with little know how can navigate the deploying of a static website. </p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-618ea41 elementor-star-rating-mobile--align-center elementor--star-style-star_fontawesome elementor-widget elementor-widget-star-rating" data-id="618ea41" data-element_type="widget" data-widget_type="star-rating.default">
+				<div class="elementor-widget-container">
+			
+		<div class="elementor-star-rating__wrapper">
+							<div class="elementor-star-rating__title">My Rating:</div>
+						<div class="elementor-star-rating" title="5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i> <span itemprop="ratingValue" class="elementor-screen-only">5/5</span></div>		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-34e9107 elementor-column elementor-col-100 elementor-top-column" data-id="34e9107" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-1b513e9 animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="1b513e9" data-element_type="widget" data-settings='{"_animation":"fadeInLeft"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="640" height="426" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-tima-miroshnichenko-5453837.jpg" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-tima-miroshnichenko-5453837.jpg 640w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-tima-miroshnichenko-5453837-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-a050b24 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="a050b24" data-element_type="section" id="conclusion" data-settings='{"animation":"fadeIn","background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-30b7e43 elementor-column elementor-col-100 elementor-top-column" data-id="30b7e43" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-463c6fa elementor-widget elementor-widget-heading" data-id="463c6fa" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Conclusion</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-a38dfba elementor-widget elementor-widget-divider" data-id="a38dfba" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-b6eb9ea elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="b6eb9ea" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-eb7c0bf elementor-column elementor-col-100 elementor-inner-column" data-id="eb7c0bf" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-5847cc0 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="5847cc0" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Overall, setting up, deploying and hosting the website was pretty simple. The files are easy to access and are easy to manage. Doing something [positive] for the first time is always a pleasant experience, and getting to know the IBM Cloud was no exception. I’d recommend it without a doubt.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-bf7de1f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="bf7de1f" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-cbdfaf7 elementor-column elementor-col-100 elementor-top-column" data-id="cbdfaf7" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-cc7db17 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="cc7db17" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-241da7a elementor-column elementor-col-50 elementor-inner-column" data-id="241da7a" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-c6d095d elementor-widget elementor-widget-heading" data-id="c6d095d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">useful links</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-ad6e897 elementor-icon-list--layout-traditional elementor-widget elementor-widget-icon-list" data-id="ad6e897" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items"><li class="elementor-icon-list-item">
+					<a href="https://cloud.ibm.com/docs/AnalyticsEngine?topic=AnalyticsEngine-config-cluster-cos" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Working With Object Storage</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+					<a href="https://cloud.ibm.com/functions/" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Functions</span>
+											</a>
+									</li>
+						</ul></div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-8e00a22 elementor-column elementor-col-50 elementor-inner-column" data-id="8e00a22" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-b27da1d elementor-widget elementor-widget-heading" data-id="b27da1d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Sources</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-fe02e78 elementor-icon-list--layout-traditional elementor-widget elementor-widget-icon-list" data-id="fe02e78" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items"><li class="elementor-icon-list-item">
+					<a href="https://www.ibm.com/za-en/cloud/cloudant" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">https://www.ibm.com/</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+					<a href="https://www.ibm.com/za-en/cloud/functions#:~:text=Based%20on%20Apache%20OpenWhisk%2C%20IBM,that%20scalably%20executes%20on%20demand." target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">https://www.ibm.com/</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+					<a href="https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-serverless-api-webapp&cm_sp=freelancer-_-webcontest-_-cta" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">https://cloud.ibm.com/doc</span>
+											</a>
+									</li>
+						</ul></div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+		<link rel="stylesheet" id="premium-addons-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-css/premium-addons.min.css" media="all"><script id="astra-theme-js-js-extra">
+var astra = {"break_point":"768","isRtl":""};
+</script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/js/minified/style.min.js" id="astra-theme-js-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.min.js" id="smartmenus-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/modal.min.js" id="modal-js-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/lottie.min.js" id="lottie-js-js"></script><script id="premium-addons-js-extra">
+var PremiumSettings = {"ajaxurl":"https:\/\/thabisomak.github.io\/websiteonibmcloud\/wp-admin\/admin-ajax.php","nonce":"06f76641ce"};
+</script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/premium-addons.min.js" id="premium-addons-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/js/frontend-modules.min.js" id="elementor-frontend-modules-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js" id="elementor-sticky-js"></script><script id="elementor-pro-frontend-js-before">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/thabisomak.github.io\/websiteonibmcloud\/wp-admin\/admin-ajax.php","nonce":"183bce5146","shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"google":{"title":"Google+","has_counter":true},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"delicious":{"title":"Delicious"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"en_US","app_id":""}};
+</script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor-pro/assets/js/frontend.min.js" id="elementor-pro-frontend-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-includes/js/jquery/ui/core.min.js" id="jquery-ui-core-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js" id="elementor-dialog-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js" id="elementor-waypoints-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/swiper/swiper.min.js" id="swiper-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/share-link/share-link.min.js" id="share-link-js"></script><script id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","downloadImage":"Download image"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"2.9.8","urls":{"assets":"https:\/\/thabisomak.github.io\/websiteonibmcloud\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"general":{"elementor_global_image_lightbox":"yes","elementor_lightbox_enable_counter":"yes","elementor_lightbox_enable_fullscreen":"yes","elementor_lightbox_enable_zoom":"yes","elementor_lightbox_enable_share":"yes","elementor_lightbox_title_src":"title","elementor_lightbox_description_src":"description"},"editorPreferences":[]},"post":{"id":711,"title":"COS%20%2B%20Functions%20%E2%80%93%20Tutorial","excerpt":"","featuredImage":false}};
+</script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/js/frontend.min.js" id="elementor-frontend-js"></script><script>
+			/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
+			</script></body></html>

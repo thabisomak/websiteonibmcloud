@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta charset="UTF-8"><title>Wordpress Using Kubernetes + Helm Chart – Tutorial</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="astra-theme-css-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/css/minified/style.min.css" media="all"><style id="astra-theme-css-inline-css">
+html{font-size:100%;}a,.page-title{color:#29d8db;}a:hover,a:focus{color:#01578c;}body,button,input,select,textarea,.ast-button,.ast-custom-button{font-family:'Work Sans',sans-serif;font-weight:400;font-size:16px;font-size:1rem;line-height:1.5;}blockquote{color:#2f2f2f;}p,.entry-content p{margin-bottom:0em;}h1,.entry-content h1,h2,.entry-content h2,h3,.entry-content h3,h4,.entry-content h4,h5,.entry-content h5,h6,.entry-content h6,.site-title,.site-title a{font-family:'Montserrat',sans-serif;font-weight:800;}.site-title{font-size:25px;font-size:1.5625rem;}header .site-logo-img .custom-logo-link img{max-width:160px;}.astra-logo-svg{width:160px;}.ast-archive-description .ast-archive-title{font-size:40px;font-size:2.5rem;}.site-header .site-description{font-size:15px;font-size:0.9375rem;}.entry-title{font-size:40px;font-size:2.5rem;}.comment-reply-title{font-size:26px;font-size:1.625rem;}.ast-comment-list #cancel-comment-reply-link{font-size:16px;font-size:1rem;}h1,.entry-content h1{font-size:60px;font-size:3.75rem;font-family:'Montserrat',sans-serif;line-height:1.3;}h2,.entry-content h2{font-size:40px;font-size:2.5rem;font-family:'Montserrat',sans-serif;line-height:1.4;}h3,.entry-content h3{font-size:30px;font-size:1.875rem;font-family:'Montserrat',sans-serif;line-height:1.5;}h4,.entry-content h4{font-size:20px;font-size:1.25rem;}h5,.entry-content h5{font-size:18px;font-size:1.125rem;}h6,.entry-content h6{font-size:15px;font-size:0.9375rem;}.ast-single-post .entry-title,.page-title{font-size:30px;font-size:1.875rem;}#secondary,#secondary button,#secondary input,#secondary select,#secondary textarea{font-size:16px;font-size:1rem;}::selection{background-color:#29d8db;color:#000000;}body,h1,.entry-title a,.entry-content h1,h2,.entry-content h2,h3,.entry-content h3,h4,.entry-content h4,h5,.entry-content h5,h6,.entry-content h6,.wc-block-grid__product-title{color:#7a7a7a;}.tagcloud a:hover,.tagcloud a:focus,.tagcloud a.current-item{color:#000000;border-color:#29d8db;background-color:#29d8db;}.main-header-menu .menu-link,.ast-header-custom-item a{color:#7a7a7a;}.main-header-menu .menu-item:hover > .menu-link,.main-header-menu .menu-item:hover > .ast-menu-toggle,.main-header-menu .ast-masthead-custom-menu-items a:hover,.main-header-menu .menu-item.focus > .menu-link,.main-header-menu .menu-item.focus > .ast-menu-toggle,.main-header-menu .current-menu-item > .menu-link,.main-header-menu .current-menu-ancestor > .menu-link,.main-header-menu .current-menu-item > .ast-menu-toggle,.main-header-menu .current-menu-ancestor > .ast-menu-toggle{color:#29d8db;}input:focus,input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="reset"]:focus,input[type="search"]:focus,textarea:focus{border-color:#29d8db;}input[type="radio"]:checked,input[type=reset],input[type="checkbox"]:checked,input[type="checkbox"]:hover:checked,input[type="checkbox"]:focus:checked,input[type=range]::-webkit-slider-thumb{border-color:#29d8db;background-color:#29d8db;box-shadow:none;}.site-footer a:hover + .post-count,.site-footer a:focus + .post-count{background:#29d8db;border-color:#29d8db;}.ast-small-footer{color:#01578c;}.ast-small-footer > .ast-footer-overlay{background-color:#f6f9f9;;}.ast-small-footer a{color:#01578c;}.footer-adv .footer-adv-overlay{border-top-style:solid;border-top-color:#7a7a7a;}.ast-comment-meta{line-height:1.666666667;font-size:13px;font-size:0.8125rem;}.single .nav-links .nav-previous,.single .nav-links .nav-next,.single .ast-author-details .author-title,.ast-comment-meta{color:#29d8db;}.entry-meta,.entry-meta *{line-height:1.45;color:#29d8db;}.entry-meta a:hover,.entry-meta a:hover *,.entry-meta a:focus,.entry-meta a:focus *{color:#01578c;}.ast-404-layout-1 .ast-404-text{font-size:200px;font-size:12.5rem;}.widget-title{font-size:22px;font-size:1.375rem;color:#7a7a7a;}#cat option,.secondary .calendar_wrap thead a,.secondary .calendar_wrap thead a:visited{color:#29d8db;}.secondary .calendar_wrap #today,.ast-progress-val span{background:#29d8db;}.secondary a:hover + .post-count,.secondary a:focus + .post-count{background:#29d8db;border-color:#29d8db;}.calendar_wrap #today > a{color:#000000;}.ast-pagination a,.page-links .page-link,.single .post-navigation a{color:#29d8db;}.ast-pagination a:hover,.ast-pagination a:focus,.ast-pagination > span:hover:not(.dots),.ast-pagination > span.current,.page-links > .page-link,.page-links .page-link:hover,.post-navigation a:hover{color:#01578c;}.ast-header-break-point .ast-mobile-menu-buttons-minimal.menu-toggle{background:transparent;color:#01578c;}.ast-header-break-point .ast-mobile-menu-buttons-outline.menu-toggle{background:transparent;border:1px solid #01578c;color:#01578c;}.ast-header-break-point .ast-mobile-menu-buttons-fill.menu-toggle{background:#01578c;color:#ffffff;}.ast-header-break-point .main-header-bar .ast-button-wrap .menu-toggle{border-radius:7px;}.wp-block-buttons.aligncenter{justify-content:center;}@media (max-width:782px){.entry-content .wp-block-columns .wp-block-column{margin-left:0px;}}@media (max-width:768px){#secondary.secondary{padding-top:0;}.ast-separate-container .ast-article-post,.ast-separate-container .ast-article-single{padding:1.5em 2.14em;}.ast-separate-container #primary,.ast-separate-container #secondary{padding:1.5em 0;}.ast-separate-container.ast-right-sidebar #secondary{padding-left:1em;padding-right:1em;}.ast-separate-container.ast-two-container #secondary{padding-left:0;padding-right:0;}.ast-page-builder-template .entry-header #secondary{margin-top:1.5em;}.ast-page-builder-template #secondary{margin-top:1.5em;}#primary,#secondary{padding:1.5em 0;margin:0;}.ast-left-sidebar #content > .ast-container{display:flex;flex-direction:column-reverse;width:100%;}.ast-author-box img.avatar{margin:20px 0 0 0;}.ast-pagination{padding-top:1.5em;text-align:center;}.ast-pagination .next.page-numbers{display:inherit;float:none;}}@media (max-width:768px){.ast-page-builder-template.ast-left-sidebar #secondary{padding-right:20px;}.ast-page-builder-template.ast-right-sidebar #secondary{padding-left:20px;}.ast-right-sidebar #primary{padding-right:0;}.ast-right-sidebar #secondary{padding-left:0;}.ast-left-sidebar #primary{padding-left:0;}.ast-left-sidebar #secondary{padding-right:0;}.ast-pagination .prev.page-numbers{padding-left:.5em;}.ast-pagination .next.page-numbers{padding-right:.5em;}}@media (min-width:769px){.ast-separate-container.ast-right-sidebar #primary,.ast-separate-container.ast-left-sidebar #primary{border:0;}.ast-separate-container.ast-right-sidebar #secondary,.ast-separate-container.ast-left-sidebar #secondary{border:0;margin-left:auto;margin-right:auto;}.ast-separate-container.ast-two-container #secondary .widget:last-child{margin-bottom:0;}.ast-separate-container .ast-comment-list li .comment-respond{padding-left:2.66666em;padding-right:2.66666em;}.ast-author-box{-js-display:flex;display:flex;}.ast-author-bio{flex:1;}.error404.ast-separate-container #primary,.search-no-results.ast-separate-container #primary{margin-bottom:4em;}}@media (min-width:769px){.ast-right-sidebar #primary{border-right:1px solid #eee;}.ast-right-sidebar #secondary{border-left:1px solid #eee;margin-left:-1px;}.ast-left-sidebar #primary{border-left:1px solid #eee;}.ast-left-sidebar #secondary{border-right:1px solid #eee;margin-right:-1px;}.ast-separate-container.ast-two-container.ast-right-sidebar #secondary{padding-left:30px;padding-right:0;}.ast-separate-container.ast-two-container.ast-left-sidebar #secondary{padding-right:30px;padding-left:0;}}.elementor-button-wrapper .elementor-button{border-style:solid;border-top-width:0;border-right-width:0;border-left-width:0;border-bottom-width:0;}body .elementor-button.elementor-size-sm,body .elementor-button.elementor-size-xs,body .elementor-button.elementor-size-md,body .elementor-button.elementor-size-lg,body .elementor-button.elementor-size-xl,body .elementor-button{border-radius:10px;padding-top:16px;padding-right:40px;padding-bottom:16px;padding-left:40px;}.elementor-button-wrapper .elementor-button{border-color:#29d8db;background-color:#29d8db;}.elementor-button-wrapper .elementor-button:hover,.elementor-button-wrapper .elementor-button:focus{color:#ffffff;background-color:#106ca0;border-color:#106ca0;}.wp-block-button .wp-block-button__link,.elementor-button-wrapper .elementor-button,.elementor-button-wrapper .elementor-button:visited{color:#ffffff;}.elementor-button-wrapper .elementor-button{font-family:inherit;font-weight:inherit;line-height:1;}.wp-block-button .wp-block-button__link{border-style:solid;border-top-width:0;border-right-width:0;border-left-width:0;border-bottom-width:0;border-color:#29d8db;background-color:#29d8db;color:#ffffff;font-family:inherit;font-weight:inherit;line-height:1;border-radius:10px;padding-top:16px;padding-right:40px;padding-bottom:16px;padding-left:40px;}.wp-block-button .wp-block-button__link:hover,.wp-block-button .wp-block-button__link:focus{color:#ffffff;background-color:#106ca0;border-color:#106ca0;}.elementor-widget-heading h1.elementor-heading-title{line-height:1.3;}.elementor-widget-heading h2.elementor-heading-title{line-height:1.4;}.elementor-widget-heading h3.elementor-heading-title{line-height:1.5;}.menu-toggle,button,.ast-button,.ast-custom-button,.button,input#submit,input[type="button"],input[type="submit"],input[type="reset"]{border-style:solid;border-top-width:0;border-right-width:0;border-left-width:0;border-bottom-width:0;color:#ffffff;border-color:#29d8db;background-color:#29d8db;border-radius:10px;padding-top:16px;padding-right:40px;padding-bottom:16px;padding-left:40px;font-family:inherit;font-weight:inherit;line-height:1;}button:focus,.menu-toggle:hover,button:hover,.ast-button:hover,.button:hover,input[type=reset]:hover,input[type=reset]:focus,input#submit:hover,input#submit:focus,input[type="button"]:hover,input[type="button"]:focus,input[type="submit"]:hover,input[type="submit"]:focus{color:#ffffff;background-color:#106ca0;border-color:#106ca0;}@media (min-width:768px){.ast-container{max-width:100%;}}@media (min-width:544px){.ast-container{max-width:100%;}}@media (max-width:544px){.ast-separate-container .ast-article-post,.ast-separate-container .ast-article-single{padding:1.5em 1em;}.ast-separate-container #content .ast-container{padding-left:0.54em;padding-right:0.54em;}.ast-separate-container #secondary{padding-top:0;}.ast-separate-container.ast-two-container #secondary .widget{margin-bottom:1.5em;padding-left:1em;padding-right:1em;}.ast-separate-container .comments-count-wrapper{padding:1.5em 1em;}.ast-separate-container .ast-comment-list li.depth-1{padding:1.5em 1em;margin-bottom:1.5em;}.ast-separate-container .ast-comment-list .bypostauthor{padding:.5em;}.ast-separate-container .ast-archive-description{padding:1.5em 1em;}.ast-search-menu-icon.ast-dropdown-active .search-field{width:170px;}.ast-separate-container .comment-respond{padding:1.5em 1em;}}@media (max-width:544px){.ast-comment-list .children{margin-left:0.66666em;}.ast-separate-container .ast-comment-list .bypostauthor li{padding:0 0 0 .5em;}}@media (max-width:768px){.ast-mobile-header-stack .main-header-bar .ast-search-menu-icon{display:inline-block;}.ast-header-break-point.ast-header-custom-item-outside .ast-mobile-header-stack .main-header-bar .ast-search-icon{margin:0;}.ast-comment-avatar-wrap img{max-width:2.5em;}.comments-area{margin-top:1.5em;}.ast-separate-container .comments-count-wrapper{padding:2em 2.14em;}.ast-separate-container .ast-comment-list li.depth-1{padding:1.5em 2.14em;}.ast-separate-container .comment-respond{padding:2em 2.14em;}}@media (max-width:768px){.ast-header-break-point .main-header-bar .ast-search-menu-icon.slide-search .search-form{right:0;}.ast-header-break-point .ast-mobile-header-stack .main-header-bar .ast-search-menu-icon.slide-search .search-form{right:-1em;}.ast-comment-avatar-wrap{margin-right:0.5em;}}.main-header-bar .button-custom-menu-item .ast-custom-button-link .ast-custom-button,.ast-theme-transparent-header .main-header-bar .button-custom-menu-item .ast-custom-button-link .ast-custom-button{font-family:inherit;font-weight:inherit;line-height:1;}.main-header-bar .button-custom-menu-item .ast-custom-button-link .ast-custom-button{padding-top:15px;padding-bottom:15px;padding-left:35px;padding-right:35px;border-style:solid;border-top-width:0px;border-right-width:0px;border-left-width:0px;border-bottom-width:0px;}.ast-theme-transparent-header .main-header-bar .button-custom-menu-item .ast-custom-button-link .ast-custom-button{border-style:solid;}@media (min-width:545px){.ast-page-builder-template .comments-area,.single.ast-page-builder-template .entry-header,.single.ast-page-builder-template .post-navigation{max-width:1240px;margin-left:auto;margin-right:auto;}}@media (max-width:768px){.ast-archive-description .ast-archive-title{font-size:40px;}.entry-title{font-size:30px;}h1,.entry-content h1{font-size:60px;}h2,.entry-content h2{font-size:40px;}h3,.entry-content h3{font-size:30px;}h4,.entry-content h4{font-size:18px;font-size:1.125rem;}h5,.entry-content h5{font-size:18px;font-size:1.125rem;}h6,.entry-content h6{font-size:15px;font-size:0.9375rem;}.ast-single-post .entry-title,.page-title{font-size:30px;}}@media (max-width:544px){.ast-archive-description .ast-archive-title{font-size:40px;}.entry-title{font-size:30px;}h1,.entry-content h1{font-size:24px;}h2,.entry-content h2{font-size:40px;}h3,.entry-content h3{font-size:30px;}h4,.entry-content h4{font-size:16px;font-size:1rem;}h5,.entry-content h5{font-size:18px;font-size:1.125rem;}h6,.entry-content h6{font-size:15px;font-size:0.9375rem;}.ast-single-post .entry-title,.page-title{font-size:30px;}.ast-header-break-point .site-branding img,.ast-header-break-point #masthead .site-logo-img .custom-logo-link img{max-width:140px;}.astra-logo-svg{width:140px;}.ast-header-break-point .site-logo-img .custom-mobile-logo-link img{max-width:140px;}}@media (max-width:768px){html{font-size:91.2%;}}@media (max-width:544px){html{font-size:91.2%;}}@media (min-width:769px){.ast-container{max-width:1240px;}}@font-face {font-family: "Astra";src: url(https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/fonts/astra.woff) format("woff"),url(https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/fonts/astra.ttf) format("truetype"),url(https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/fonts/astra.svg#astra) format("svg");font-weight: normal;font-style: normal;font-display: fallback;}@media (max-width:768px) {.main-header-bar .main-header-bar-navigation{display:none;}}.ast-desktop .main-header-menu.submenu-with-border .sub-menu,.ast-desktop .main-header-menu.submenu-with-border .astra-full-megamenu-wrapper{border-color:#29d8db;}.ast-desktop .main-header-menu.submenu-with-border .sub-menu{border-top-width:2px;border-right-width:0px;border-left-width:0px;border-bottom-width:0px;border-style:solid;}.ast-desktop .main-header-menu.submenu-with-border .sub-menu .sub-menu{top:-2px;}.ast-desktop .main-header-menu.submenu-with-border .sub-menu .menu-link,.ast-desktop .main-header-menu.submenu-with-border .children .menu-link{border-bottom-width:0px;border-style:solid;border-color:#eaeaea;}@media (min-width:769px){.main-header-menu .sub-menu .menu-item.ast-left-align-sub-menu:hover > .sub-menu,.main-header-menu .sub-menu .menu-item.ast-left-align-sub-menu.focus > .sub-menu{margin-left:-0px;}}.ast-small-footer{border-top-style:solid;border-top-width:1px;border-top-color:rgba(221,221,221,0.8);}.ast-small-footer-wrap{text-align:center;}@media (max-width:920px){.ast-404-layout-1 .ast-404-text{font-size:100px;font-size:6.25rem;}}.ast-breadcrumbs .trail-browse,.ast-breadcrumbs .trail-items,.ast-breadcrumbs .trail-items li{display:inline-block;margin:0;padding:0;border:none;background:inherit;text-indent:0;}.ast-breadcrumbs .trail-browse{font-size:inherit;font-style:inherit;font-weight:inherit;color:inherit;}.ast-breadcrumbs .trail-items{list-style:none;}.trail-items li::after{padding:0 0.3em;content:"\00bb";}.trail-items li:last-of-type::after{display:none;}h1,.entry-content h1,h2,.entry-content h2,h3,.entry-content h3,h4,.entry-content h4,h5,.entry-content h5,h6,.entry-content h6{color:#4a4a4a;}.elementor-widget-heading .elementor-heading-title{margin:0;}.ast-header-break-point .main-header-bar{border-bottom-width:0;}@media (min-width:769px){.main-header-bar{border-bottom-width:0;}}.ast-safari-browser-less-than-11 .main-header-menu .menu-item, .ast-safari-browser-less-than-11 .main-header-bar .ast-masthead-custom-menu-items{display:block;}.main-header-menu .menu-item, .main-header-bar .ast-masthead-custom-menu-items{-js-display:flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-moz-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column;}.main-header-menu > .menu-item > .menu-link{height:100%;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;-js-display:flex;display:flex;}.ast-primary-menu-disabled .main-header-bar .ast-masthead-custom-menu-items{flex:unset;}.header-main-layout-1 .ast-flex.main-header-container, .header-main-layout-3 .ast-flex.main-header-container{-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;}
+</style><link rel="stylesheet" id="astra-google-fonts-css" href="//fonts.googleapis.com/css?family=Work+Sans%3A400%2C%7CMontserrat%3A800%2C&display=fallback&ver=2.6.2" media="all"><link rel="stylesheet" id="astra-menu-animation-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/css/minified/menu-animation.min.css" media="all"><link rel="stylesheet" id="wp-block-library-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-includes/css/dist/block-library/style.min.css" media="all"><link rel="stylesheet" id="elementor-icons-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css" media="all"><link rel="stylesheet" id="elementor-animations-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/animations/animations.min.css" media="all"><link rel="stylesheet" id="elementor-frontend-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/css/frontend.min.css" media="all"><link rel="stylesheet" id="elementor-pro-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor-pro/assets/css/frontend.min.css" media="all"><link rel="stylesheet" id="font-awesome-5-all-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css" media="all"><link rel="stylesheet" id="font-awesome-4-shim-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css" media="all"><link rel="stylesheet" id="elementor-global-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/css/global.css" media="all"><link rel="stylesheet" id="elementor-post-384-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/css/post-384.css" media="all"><link rel="stylesheet" id="google-fonts-1-css" href="https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CProza+Libre%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CMontserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CQuestrial%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CArchivo%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&ver=5.6" media="all"><link rel="stylesheet" id="elementor-icons-shared-0-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css" media="all"><link rel="stylesheet" id="elementor-icons-fa-solid-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css" media="all"><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js" id="font-awesome-4-shim-js"></script><style>.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style id="wp-custom-css">
+			
+
+/** Start Block Kit CSS: 105-3-0fb64e69c49a8e10692d28840c54ef95 **/
+
+.envato-kit-102-phone-overlay {
+	position: absolute !important;
+	display: block !important;
+	top: 0%;
+	left: 0%;
+	right: 0%;
+	margin: auto;
+	z-index: 1;
+}
+
+/** End Block Kit CSS: 105-3-0fb64e69c49a8e10692d28840c54ef95 **/
+
+
+
+/** Start Block Kit CSS: 136-3-fc37602abad173a9d9d95d89bbe6bb80 **/
+
+.envato-block__preview{overflow: visible !important;}
+
+/** End Block Kit CSS: 136-3-fc37602abad173a9d9d95d89bbe6bb80 **/
+
+		</style><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"></head><body class="page-template page-template-elementor_canvas page page-id-384 ast-desktop ast-page-builder-template ast-no-sidebar astra-2.6.2 ast-header-custom-item-inside ast-single-post ast-inherit-site-logo-transparent elementor-default elementor-template-canvas elementor-kit-413 elementor-page elementor-page-384">
+			<div data-elementor-type="wp-page" data-elementor-id="384" class="elementor elementor-384" data-elementor-settings="[]">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section class="elementor-element elementor-element-52900cf elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="52900cf" data-element_type="section" id="welcome" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-no">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-1e41ca75 elementor-column elementor-col-100 elementor-top-column" data-id="1e41ca75" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-5b0c4bf5 elementor-invisible elementor-widget elementor-widget-heading" data-id="5b0c4bf5" data-element_type="widget" data-settings='{"_animation":"fadeIn"}' data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-xxl">Tutorial: Hosting A Small Business Website (WordPress) ON IBM Cloud</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1b9fe3e elementor-widget elementor-widget-divider" data-id="1b9fe3e" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-c171659 elementor-widget elementor-widget-spacer" data-id="c171659" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6bf5c6f7 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="6bf5c6f7" data-element_type="widget" data-settings='{"_animation":"fadeIn"}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">For this option, I decided to use the worlds most popular website CMS (<strong>WordPress</strong>) and deployed it onto a Kubernetes cluster using Helm Chart.
+<br><br>
+This is something I had never done before, so it was a satisfying challenge to figure out how everything works.
+<br><br>
+I decided to create a dummy website for an interior design business, you can view the hosted website here: <a href="http://161.202.63.14/" target="_blank" rel="noopener">http://161.202.63.14/</a>
+<br><br>
+I’ll give you a quick tutorial on how to get it done, and offer a review of my overall experience.</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-61b522d elementor-align-left elementor-invisible elementor-widget elementor-widget-button" data-id="61b522d" data-element_type="widget" data-settings='{"_animation":"fadeInUp","_animation_delay":800}' data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="#getstarted" class="elementor-button-link elementor-button elementor-size-md elementor-animation-sink" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon elementor-align-icon-right">
+				<i aria-hidden="true" class="fas fa-long-arrow-alt-down"></i>			</span>
+						<span class="elementor-button-text">Let's GO</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-54dde270 elementor-widget elementor-widget-spacer" data-id="54dde270" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-74c417da elementor-section-content-middle animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="74c417da" data-element_type="section" data-settings='{"background_background":"classic","sticky":"top","animation":"none","sticky_on":["desktop","tablet","mobile"],"sticky_offset":0,"sticky_effects_offset":0}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-4c7ab57a elementor-column elementor-col-100 elementor-top-column" data-id="4c7ab57a" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-1855244c elementor-nav-menu--stretch elementor-nav-menu__align-center elementor-nav-menu--dropdown-mobile animated-slow elementor-nav-menu--indicator-classic elementor-nav-menu__text-align-aside elementor-nav-menu--toggle elementor-nav-menu--burger elementor-invisible elementor-widget elementor-widget-nav-menu" data-id="1855244c" data-element_type="widget" data-settings='{"full_width":"stretch","_animation":"fadeIn","layout":"horizontal","toggle":"burger"}' data-widget_type="nav-menu.default">
+				<div class="elementor-widget-container">
+						<nav role="navigation" class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-underline e--animation-slow"><ul id="menu-1-1855244c" class="elementor-nav-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-785"><a class="menu-link elementor-item">Website Type</a>
+<ul class="sub-menu elementor-nav-menu--dropdown"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-784"><a href="https://thabisomak.github.io/websiteonibmcloud/cos-functions/" class="menu-link elementor-sub-item">Static Using COS + Functions</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-786"><a href="#" class="menu-link elementor-sub-item elementor-item-anchor">WordPress Using Kubernetes + Helm Chart</a></li>
+</ul></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10"><a href="#getstarted" class="menu-link elementor-item elementor-item-anchor">Get Started</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-644"><a href="#cluster" class="menu-link elementor-item elementor-item-anchor">Set Up Cluster</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-645"><a href="#blockstorage" class="menu-link elementor-item elementor-item-anchor">Block Storage</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11"><a href="#wordpress" class="menu-link elementor-item elementor-item-anchor">Install WordPress</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-475"><a href="#howitperforms" class="menu-link elementor-item elementor-item-anchor">How It Performs</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a href="#conclusion" class="menu-link elementor-item elementor-item-anchor">Conclusion</a></li>
+</ul></nav><div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false">
+			<i class="eicon-menu-bar" aria-hidden="true"></i>
+			<span class="elementor-screen-only">Menu</span>
+		</div>
+			<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" role="navigation" aria-hidden="true"><ul id="menu-2-1855244c" class="elementor-nav-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-785"><a class="menu-link elementor-item">Website Type</a>
+<ul class="sub-menu elementor-nav-menu--dropdown"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-784"><a href="https://thabisomak.github.io/websiteonibmcloud/cos-functions/" class="menu-link elementor-sub-item">Static Using COS + Functions</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-786"><a href="#" class="menu-link elementor-sub-item elementor-item-anchor">WordPress Using Kubernetes + Helm Chart</a></li>
+</ul></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10"><a href="#getstarted" class="menu-link elementor-item elementor-item-anchor">Get Started</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-644"><a href="#cluster" class="menu-link elementor-item elementor-item-anchor">Set Up Cluster</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-645"><a href="#blockstorage" class="menu-link elementor-item elementor-item-anchor">Block Storage</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11"><a href="#wordpress" class="menu-link elementor-item elementor-item-anchor">Install WordPress</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-475"><a href="#howitperforms" class="menu-link elementor-item elementor-item-anchor">How It Performs</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a href="#conclusion" class="menu-link elementor-item elementor-item-anchor">Conclusion</a></li>
+</ul></nav></div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-d18741c animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="d18741c" data-element_type="section" id="getstarted" data-settings='{"animation":"fadeIn","background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-a1e462a elementor-column elementor-col-100 elementor-top-column" data-id="a1e462a" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-86820de elementor-widget elementor-widget-heading" data-id="86820de" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Getting Started</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-20a8dc0 elementor-widget elementor-widget-divider" data-id="20a8dc0" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-db1590f elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="db1590f" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-a49bf6b elementor-column elementor-col-50 elementor-inner-column" data-id="a49bf6b" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-551a985 elementor-widget elementor-widget-heading" data-id="551a985" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">Create Your Free IBM Cloud Account</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-90c04cc elementor-invisible elementor-widget elementor-widget-text-editor" data-id="90c04cc" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>This is the first thing you need to do. Visit https://cloud.ibm.com and set up your free IBM Cloud account. You’ll have access to over 40 of their services without having to enter your credit card details. If you haven’t created an account yet, click on the link below and get started.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-7f0e737 elementor-align-right elementor-mobile-align-center animated-fast elementor-invisible elementor-widget elementor-widget-button" data-id="7f0e737" data-element_type="widget" data-settings='{"_animation":"fadeInUp","_animation_delay":150}' data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="https://cloud.ibm.com/" target="_blank" class="elementor-button-link elementor-button elementor-size-sm elementor-animation-grow" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Create Account</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-71f6f85 elementor-column elementor-col-50 elementor-inner-column" data-id="71f6f85" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-900a4c9 animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="900a4c9" data-element_type="widget" data-settings='{"_animation":"zoomIn"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="665" height="613" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Create-Cloud-Account.png" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Create-Cloud-Account.png 665w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Create-Cloud-Account-300x277.png 300w" sizes="(max-width: 665px) 100vw, 665px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-d625bb5 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="d625bb5" data-element_type="section" id="cluster" data-settings='{"animation":"fadeIn","background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-9cb3dea elementor-column elementor-col-100 elementor-top-column" data-id="9cb3dea" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-caea710 elementor-widget elementor-widget-heading" data-id="caea710" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Setting Up Your Kubernetes Cluster</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4ea49e3 elementor-widget elementor-widget-divider" data-id="4ea49e3" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-d2b694a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="d2b694a" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-24de5d7 elementor-column elementor-col-100 elementor-inner-column" data-id="24de5d7" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-ac372d8 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="ac372d8" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><strong>So What on earth is Kubernetes?</strong>  Here’s a super-quick summary.
+<br><br>
+Kubernetes, also known as K8s, is a portable, extensible, open-source platform for managing <strong>containerized</strong> workloads and services, that facilitates both declarative configuration and automation. It groups containers that make up an application into logical units for easy management and discovery.
+<br><br>
+Ok….But what are containers??
+<br><br><strong><span style="text-decoration: underline;">Containers</span></strong> are a method of building, packaging and deploying software. Typically, a container would include everything the containerized workload needs to run, including all the code, runtime and libraries.
+<br><br>
+Similar to a virtual machine, a container has its own filesystem, share of CPU, memory, process space, and more. (See the image below)</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-fce88fb elementor-widget elementor-widget-image" data-id="fce88fb" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Containers.png" data-elementor-open-lightbox="yes" data-elementor-lightbox-title="Containers">
+							<img width="1024" height="672" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Containers-1024x672.png" class="attachment-large size-large" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Containers-1024x672.png 1024w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Containers-300x197.png 300w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Containers-768x504.png 768w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Containers-1536x1009.png 1536w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Containers.png 1759w" sizes="(max-width: 1024px) 100vw, 1024px"></a>
+											</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-4834497 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="4834497" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>To read more about Kubernetes, <a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/#why-you-need-kubernetes-and-what-can-it-do" target="_blank" rel="noopener"><strong>click here</strong></a><strong>.</strong><br><br>Once you’ve created your free account, you will have to set up your Kubernetes cluster and choose the resources you will want. Note, if you want to be able to access your website through a public IP, you will need to create your cluster with the Standard plan and Not the FREE plan.<br><br><br><strong>Follow the steps below to create your cluster</strong></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-60b47c67 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="60b47c67" data-element_type="section" id="pricing" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-f4fc7ef elementor-column elementor-col-100 elementor-top-column" data-id="f4fc7ef" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-52004a36 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="52004a36" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-74db7de1 elementor-column elementor-col-50 elementor-inner-column" data-id="74db7de1" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-84e8e48 elementor-widget elementor-widget-heading" data-id="84e8e48" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">1</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-2bf12be3 elementor-column elementor-col-50 elementor-inner-column" data-id="2bf12be3" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-37fbf847 elementor-widget elementor-widget-heading" data-id="37fbf847" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Creating A Cluster.</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1eb3e0f5 elementor-widget elementor-widget-text-editor" data-id="1eb3e0f5" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>In your IBM Cloud console, click on the menu, navigate to <strong>Kubernetes -> Clusters</strong> and click on<strong> Create New Clusters</strong></p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-b990e2c elementor-arrows-position-outside elementor-pagination-position-outside elementor-widget elementor-widget-image-carousel" data-id="b990e2c" data-element_type="widget" data-settings='{"slides_to_show":"1","navigation":"both","autoplay":"yes","pause_on_hover":"yes","pause_on_interaction":"yes","autoplay_speed":5000,"infinite":"yes","effect":"slide","speed":500,"direction":"ltr"}' data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper">
+				<div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="b990e2c" data-elementor-lightbox-title="Go to Clusters Page" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Step-1.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Step-1-ozwxc3kgdqqje6az8zicato4r1jzvmk29930lohyfw.png" alt="Go to Clusters Page"></figure></a></div><div class="swiper-slide"><a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="b990e2c" data-elementor-lightbox-title="Create New" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Step-1_2.png"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Step-1_2-ozwxhy4awmqrmtt53iirtcjdtcq7rtrxq77s3ntrhs.png" alt="Create New"></figure></a></div>			</div>
+												<div class="swiper-pagination"></div>
+													<div class="elementor-swiper-button elementor-swiper-button-prev">
+						<i class="eicon-chevron-left" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Previous</span>
+					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next">
+						<i class="eicon-chevron-right" aria-hidden="true"></i>
+						<span class="elementor-screen-only">Next</span>
+					</div>
+									</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-6887f9f1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="6887f9f1" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-40b1a7e elementor-column elementor-col-100 elementor-top-column" data-id="40b1a7e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-25e8ef1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="25e8ef1" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-e203a70 elementor-column elementor-col-50 elementor-inner-column" data-id="e203a70" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-5812dd2 elementor-widget elementor-widget-heading" data-id="5812dd2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">2</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-81f391e elementor-column elementor-col-50 elementor-inner-column" data-id="81f391e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-9abe7c8 elementor-widget elementor-widget-heading" data-id="9abe7c8" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Setup Your Cluster</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-d968fb8 elementor-widget elementor-widget-text-editor" data-id="d968fb8" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>On this page, you will be able  to set up the various aspects of your cluster (Orchestration Service, Infrastructure, Location etc) according to your requirements. Remember, to have your WordPress site accessible through a public IP, you will have to choose the Standard plan. Click on the button to view the settings I used.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-ce579f6 elementor-widget elementor-widget-premium-addon-modal-box" data-id="ce579f6" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-ce579f6" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Click to see my Cluster Setup</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-ce579f6" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p><strong>Pricing Plan</strong></p><ul><li>Standard</li></ul><p><strong>Orchestration service</strong></p><ul><li>Kubernetes Version 1.19.4</li></ul><p><strong>Infrastructure</strong></p><ul><li>Classic</li></ul><p><strong>Location</strong></p><ul><li>Asia Pacific -> Single Zone -> Hong Kong 2</li></ul><p><strong>Worker Pool</strong></p><ul><li>3 Worker Nodes</li><li>Flavor changed to<ol><li style="text-align: left;">vCPU – 2</li><li>Memory – 4GB</li><li>Machine Type – Virtual Shared</li><li>Operating System – Ubuntu 18</li><li>Primary Disk – 25GB SSD</li><li>Secondary Disk – 100GB SSD</li><li>Network Speed – 10bps</li></ol></li></ul><p><strong>Encrypt Endpoint Only</strong></p><ul><li>Off</li></ul></div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+                    </style></div>
+				</div>
+				<div class="elementor-element elementor-element-89cc008 elementor-widget elementor-widget-image" data-id="89cc008" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Step-1_3.png" data-elementor-open-lightbox="yes" data-elementor-lightbox-title="Step 1_3">
+							<img src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/Step-1_3-ozwxhz253gs1yfrry0xeduaueqlkzivo2bv9kxsdhe.png" title="Step 1_3" alt="Edit Setup"></a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-347a291 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="347a291" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-a421278 elementor-column elementor-col-100 elementor-top-column" data-id="a421278" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-3a88ab5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="3a88ab5" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-fad686c elementor-column elementor-col-50 elementor-inner-column" data-id="fad686c" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-b59f96e elementor-widget elementor-widget-heading" data-id="b59f96e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">3</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-b74131f elementor-column elementor-col-50 elementor-inner-column" data-id="b74131f" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-8da0cb1 elementor-widget elementor-widget-heading" data-id="8da0cb1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Wait A little While</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-75ec7a9 elementor-widget elementor-widget-text-editor" data-id="75ec7a9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">The Kubernetes clusters tend to take about 20 minutes to complete the setup process. Take a break, go for a jog, read a book…..Let it run its course. Once it’s done, the state will reflect as ‘Normal’, and then you can move on to the next step.<br><br> Meanwhile, click the buttons below to see what you can expect when it’s done.</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-f939ceb elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="f939ceb" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-8be0b25 elementor-column elementor-col-25 elementor-inner-column" data-id="8be0b25" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-735fb09 elementor-column elementor-col-25 elementor-inner-column" data-id="735fb09" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-289559a elementor-widget elementor-widget-premium-addon-modal-box" data-id="289559a" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-289559a" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>The Cluster Page</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-289559a" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p style="text-align: left;"><strong>The Cluster Page gives you a summarized overview of your cluster with all the crucial information such as Cluster ID, Version, Status and more. Critically, you also get an overview of the status of all your worker nodes.</strong></p><p><br><br><strong><img loading="lazy" class="aligncenter wp-image-674 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/My-Cluster.png" alt="" width="1366" height="972" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/My-Cluster.png 1366w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/My-Cluster-300x213.png 300w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/My-Cluster-1024x729.png 1024w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/My-Cluster-768x546.png 768w" sizes="(max-width: 1366px) 100vw, 1366px"></strong></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-289559a .premium-modal-box-modal-dialog {
+                width: 90%            }
+            }        </style></div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-9e9f0be elementor-column elementor-col-25 elementor-inner-column" data-id="9e9f0be" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-680fdf6 elementor-widget elementor-widget-premium-addon-modal-box" data-id="680fdf6" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-680fdf6" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Kubernetes Dashboard</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-680fdf6" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p style="text-align: left;"><strong>The Kubernetes dashboard is where you go to get all the detailed information regarding your cluster. If you are having problems with your cluster and need to troubleshoot or see where any problems are originating, this is most likely where you will get your answers.</strong></p><p> </p><p><br><br><strong><img loading="lazy" class="aligncenter wp-image-676 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Kubernetes-Dashboard.png" alt="" width="1366" height="2278" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Kubernetes-Dashboard.png 1366w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Kubernetes-Dashboard-180x300.png 180w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Kubernetes-Dashboard-614x1024.png 614w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Kubernetes-Dashboard-768x1281.png 768w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Kubernetes-Dashboard-921x1536.png 921w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Kubernetes-Dashboard-1228x2048.png 1228w" sizes="(max-width: 1366px) 100vw, 1366px"></strong></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-680fdf6 .premium-modal-box-modal-dialog {
+                width: 90%            }
+            }        </style></div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-4b79d2b elementor-column elementor-col-25 elementor-inner-column" data-id="4b79d2b" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-317d161 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="317d161" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-143f388 elementor-column elementor-col-50 elementor-inner-column" data-id="143f388" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-d0bdbbf elementor-column elementor-col-50 elementor-inner-column" data-id="d0bdbbf" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-0aa8e97 elementor-aspect-ratio-169 elementor-widget elementor-widget-video" data-id="0aa8e97" data-element_type="widget" data-settings='{"aspect_ratio":"169"}' data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-wrapper elementor-fit-aspect-ratio elementor-open-inline">
+					<video class="elementor-video" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Pexels-Videos-2795311.mp4" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload"></video></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-37416c8 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="37416c8" data-element_type="section" id="blockstorage" data-settings='{"animation":"fadeIn"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-15e03a2 elementor-column elementor-col-100 elementor-top-column" data-id="15e03a2" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-0815ee5 elementor-widget elementor-widget-heading" data-id="0815ee5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Install Block Storage Plugin</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-509bb29 elementor-widget elementor-widget-divider" data-id="509bb29" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-72c0a05 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="72c0a05" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-5ca710f elementor-column elementor-col-100 elementor-inner-column" data-id="5ca710f" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-b1d8653 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="b1d8653" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">IBM Cloud Block Storage is persistent, high-performance iSCSI storage that is provisioned and managed independently of compute instances. iSCSI-based Block Storage LUNs are connected to authorized devices through redundant multi-path I/O (MPIO) connections.
+<br><br>
+Install the IBM Cloud Block Storage plug-in with a Helm chart to set up pre-defined storage classes for Block Storage. You’ll use these storage classes to create a PVC to provision Block Storage for your app.
+<br><br><strong>WAAAAIT….What is a PVC?</strong>
+<br><br>
+A PersistentVolume (PV) is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes. It is a resource in the cluster just like a node is a cluster resource. PVs are volume plugins like Volumes, but have a lifecycle independent of any individual Pod that uses the PV. This API object captures the details of the implementation of the storage, be that NFS, iSCSI, or a cloud-provider-specific storage system.
+<br><br>
+A <b>PersistentVolumeClaim</b> (PVC) is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources. Pods can request specific levels of resources (CPU and Memory). Claims can request specific size and access modes (e.g., they can be mounted ReadWriteOnce, ReadOnlyMany or ReadWriteMany, see AccessModes).
+<br><br>
+Got it? if not, read more <strong><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" target="_blank" rel="noopener">here</a></strong>
+<br><br>
+Go ahead and install the Block Storage plugin by following these steps.</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-a92b058 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="a92b058" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-e25846e elementor-column elementor-col-100 elementor-top-column" data-id="e25846e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-b085b3f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="b085b3f" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-31d54ec elementor-column elementor-col-50 elementor-inner-column" data-id="31d54ec" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-dcaff6b elementor-widget elementor-widget-heading" data-id="dcaff6b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">4</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-d2d9947 elementor-column elementor-col-50 elementor-inner-column" data-id="d2d9947" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-18ee342 elementor-widget elementor-widget-heading" data-id="18ee342" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Open Up IBM Cloud Shell</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6da01b4 elementor-widget elementor-widget-text-editor" data-id="6da01b4" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Click on the IBM Cloud Shell icon on the top right corner of your console. The IBM Cloud Shell is IBM’s web-based version of PoweShell. It makes running commands so much easier.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-ed50060 elementor-widget elementor-widget-image" data-id="ed50060" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+											<a href="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/IBM-Shell.png" data-elementor-open-lightbox="yes" data-elementor-lightbox-title="IBM Shell">
+							<img src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/elementor/thumbs/IBM-Shell-ozwzavsx1lmvp1hix2zxkgmr6mo2j2kdnlocmtjnne.png" title="IBM Shell" alt="IBM Shell"></a>
+											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-3c92208 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="3c92208" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-3243803 elementor-column elementor-col-100 elementor-top-column" data-id="3243803" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-626e92d elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="626e92d" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-cb62ff3 elementor-column elementor-col-50 elementor-inner-column" data-id="cb62ff3" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-fe6cc0a elementor-widget elementor-widget-heading" data-id="fe6cc0a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">5</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-a3d8492 elementor-column elementor-col-50 elementor-inner-column" data-id="a3d8492" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-b2d5a7d elementor-widget elementor-widget-heading" data-id="b2d5a7d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Target The Correct Cluster</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-345ee84 elementor-widget elementor-widget-text-editor" data-id="345ee84" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Use the following command to target the correct cluster </p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-5c8651b elementor-widget elementor-widget-text-editor" data-id="5c8651b" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><a style="color: #ffffff;"></a><a style="color: #ffffff;">ibmcloud ks cluster config –cluster [Your Cluster ID]</a></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-e762f13 elementor-widget elementor-widget-text-editor" data-id="e762f13" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>(Replace [Your Cluster ID] with your actual cluster ID which you can find on your Cluster page<strong> <a href="https://cloud.ibm.com/kubernetes/clusters" target="_blank" rel="noopener">here</a>.</strong></p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6809f46 elementor-widget elementor-widget-premium-addon-modal-box" data-id="6809f46" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-6809f46" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Example Of Expected Output</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-6809f46" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p><img loading="lazy" class="aligncenter wp-image-653 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Target-Output.png" alt="" width="897" height="111" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Target-Output.png 897w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Target-Output-300x37.png 300w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Target-Output-768x95.png 768w" sizes="(max-width: 897px) 100vw, 897px"></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-6809f46 .premium-modal-box-modal-dialog {
+                width: 85%            }
+            }        </style></div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-869f134 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="869f134" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-0b3361e elementor-column elementor-col-100 elementor-top-column" data-id="0b3361e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-544365b elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="544365b" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-8c7fcba elementor-column elementor-col-50 elementor-inner-column" data-id="8c7fcba" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-abc140e elementor-widget elementor-widget-heading" data-id="abc140e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">6</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-b4bc7f2 elementor-column elementor-col-50 elementor-inner-column" data-id="b4bc7f2" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-238ace7 elementor-widget elementor-widget-heading" data-id="238ace7" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Plugin Installation</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-44d389a elementor-widget elementor-widget-text-editor" data-id="44d389a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>1) Use the following command to add the IBM Cloud Helm chart repository to the cluster where you want to use the IBM Cloud Block Storage plug-in.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-198590f elementor-widget elementor-widget-text-editor" data-id="198590f" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>helm3 repo add iks-charts https://icr.io/helm/iks-charts</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-3aaf3c5 elementor-widget elementor-widget-premium-addon-modal-box" data-id="3aaf3c5" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-3aaf3c5" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Example Of Expected Output</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-3aaf3c5" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p><img loading="lazy" class="aligncenter wp-image-657 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Charts-Added.png" alt="" width="623" height="30" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Charts-Added.png 623w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Charts-Added-300x14.png 300w" sizes="(max-width: 623px) 100vw, 623px"></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-3aaf3c5 .premium-modal-box-modal-dialog {
+                width: 85%            }
+            }        </style></div>
+				</div>
+				<div class="elementor-element elementor-element-b1d2709 elementor-widget elementor-widget-text-editor" data-id="b1d2709" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>2) Update the Helm repo to retrieve the latest version of all Helm charts in this repo.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-f3c870a elementor-widget elementor-widget-text-editor" data-id="f3c870a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>helm3 repo update</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-2d4d874 elementor-widget elementor-widget-premium-addon-modal-box" data-id="2d4d874" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-2d4d874" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Example Of Expected Output</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-2d4d874" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p><img loading="lazy" class="aligncenter wp-image-658 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Helm-Update.png" alt="" width="586" height="68" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Helm-Update.png 586w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Helm-Update-300x35.png 300w" sizes="(max-width: 586px) 100vw, 586px"></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-2d4d874 .premium-modal-box-modal-dialog {
+                width: 85%            }
+            }        </style></div>
+				</div>
+				<div class="elementor-element elementor-element-16ed737 elementor-widget elementor-widget-text-editor" data-id="16ed737" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">3) Install the IBM Cloud Block Storage plug-in and give your installation a name</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-b3708b9 elementor-widget elementor-widget-text-editor" data-id="b3708b9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>helm install [name] iks-charts/ibmcloud-block-storage-plugin -n [namespace]</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-fa5bc6b elementor-widget elementor-widget-text-editor" data-id="fa5bc6b" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><ul><li>Replace [name] with your desired name</li><li>Replace [namespace] with the word ‘default’</li></ul></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-2d1ab8d elementor-widget elementor-widget-premium-addon-modal-box" data-id="2d1ab8d" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-2d1ab8d" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Example Of Expected Output</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-2d1ab8d" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p><img loading="lazy" class="aligncenter wp-image-659 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Install-Blocks.png" alt="" width="763" height="765" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Install-Blocks.png 763w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Install-Blocks-300x300.png 300w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Install-Blocks-150x150.png 150w" sizes="(max-width: 763px) 100vw, 763px"></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-2d1ab8d .premium-modal-box-modal-dialog {
+                width: 85%            }
+            }        </style></div>
+				</div>
+				<div class="elementor-element elementor-element-041394d elementor-widget elementor-widget-text-editor" data-id="041394d" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>4) Verify that the installation was successful. (Status should show as running)</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-669f0fc elementor-widget elementor-widget-text-editor" data-id="669f0fc" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>kubectl get pod -n default</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-22ab298 elementor-widget elementor-widget-premium-addon-modal-box" data-id="22ab298" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-22ab298" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Example Of Expected Output</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-22ab298" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p><img loading="lazy" class="aligncenter wp-image-660 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Check-Block.png" alt="" width="445" height="148" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Check-Block.png 445w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Check-Block-300x100.png 300w" sizes="(max-width: 445px) 100vw, 445px"></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-22ab298 .premium-modal-box-modal-dialog {
+                width: 85%            }
+            }        </style></div>
+				</div>
+				<div class="elementor-element elementor-element-149585e elementor-widget elementor-widget-text-editor" data-id="149585e" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p> </p><p><span style="text-decoration: underline;"><strong>NOTE</strong></span></p><p>Do not close cloud shell yet, you will need it shortly.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-60c8a74 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="60c8a74" data-element_type="section" id="wordpress" data-settings='{"animation":"fadeIn","background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-109b840 elementor-column elementor-col-100 elementor-top-column" data-id="109b840" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-3387348 elementor-widget elementor-widget-heading" data-id="3387348" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Install WordPress</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-91e6ff6 elementor-widget elementor-widget-divider" data-id="91e6ff6" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-3377892 elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="3377892" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-1be31b7 elementor-column elementor-col-50 elementor-inner-column" data-id="1be31b7" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-ebd1e07 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="ebd1e07" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">WordPress is a free and open-source content management system written in PHP and paired with a MySQL or MariaDB database. It is the worlds most popular CMS powering more than 30% of the websites on the internet. <br><br>
+You should now be ready to deploy WordPress onto the cluster. The installation will be done straight from the catalog however, there are a few steps that will be required to actually access your website.</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-ef28917 elementor-column elementor-col-50 elementor-inner-column" data-id="ef28917" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-a004fbe animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="a004fbe" data-element_type="widget" data-settings='{"_animation":"zoomIn"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="640" height="426" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.jpg" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.jpg 640w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/glenn-carstens-peters-npxXWgQ33ZQ-unsplash-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-669dde2 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="669dde2" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-28021ee elementor-column elementor-col-100 elementor-top-column" data-id="28021ee" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-c06bc51 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="c06bc51" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-72736d3 elementor-column elementor-col-50 elementor-inner-column" data-id="72736d3" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-f3be328 elementor-widget elementor-widget-heading" data-id="f3be328" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">7</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-06c2030 elementor-column elementor-col-50 elementor-inner-column" data-id="06c2030" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-e893183 elementor-widget elementor-widget-heading" data-id="e893183" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Navigate To WordPress In the Catalog</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-2103c99 elementor-widget elementor-widget-text-editor" data-id="2103c99" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Click on <b>Catalog </b>and Search for <b>WordPress </b></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-958d37b elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="958d37b" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-073b32c elementor-column elementor-col-100 elementor-top-column" data-id="073b32c" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-c985ceb elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="c985ceb" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-f242347 elementor-column elementor-col-50 elementor-inner-column" data-id="f242347" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-17edc85 elementor-widget elementor-widget-heading" data-id="17edc85" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">8</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-e56e923 elementor-column elementor-col-50 elementor-inner-column" data-id="e56e923" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-dd593a1 elementor-widget elementor-widget-heading" data-id="dd593a1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Setup Your Installation</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-db20dbc elementor-widget elementor-widget-text-editor" data-id="db20dbc" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>On this page, you will be able to set up the various aspects of your WordPress Installation.</p><p>Set the installation up as follows:</p><ul><li>Target – <strong>IBM Kubernetes Service</strong></li><li>Method – <strong>Helm Chart</strong></li><li>Cluster – <strong>Your desired cluster</strong></li><li>Target Namespace – <strong>Default</strong></li></ul><p>You can also name your workspace and set the deployment values</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-8ede43a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="8ede43a" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-04e7dab elementor-column elementor-col-100 elementor-top-column" data-id="04e7dab" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-acf95c4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="acf95c4" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-595339e elementor-column elementor-col-50 elementor-inner-column" data-id="595339e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-ede2083 elementor-widget elementor-widget-heading" data-id="ede2083" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">9</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-e6723aa elementor-column elementor-col-50 elementor-inner-column" data-id="e6723aa" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-a5fe6f5 elementor-widget elementor-widget-heading" data-id="a5fe6f5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Open The Workspace Log</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-e8b8b55 elementor-widget elementor-widget-text-editor" data-id="e8b8b55" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">Once WordPress has been installed, open up the log by clicking “<strong>View Log</strong>“.
+You can also navigate here by going to menu -> <strong>Schematics -> Workspaces -> Your WordPress installation.</strong>
+<br><br><span style="text-decoration: underline;"><strong>NOTE</strong></span> <br> 
+
+Viewing the log online may be frustrating sometimes as it refreshes every few seconds. To avoid pulling out your hair, Copy the log and view it in WordPad (With word wrap set to wrap to window)</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-94c508f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="94c508f" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-53942f1 elementor-column elementor-col-100 elementor-top-column" data-id="53942f1" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-61fa2f4 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="61fa2f4" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-57ea98c elementor-column elementor-col-50 elementor-inner-column" data-id="57ea98c" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-de4673d elementor-widget elementor-widget-heading" data-id="de4673d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">10</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-7a3941e elementor-column elementor-col-50 elementor-inner-column" data-id="7a3941e" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-cd5d3cd elementor-widget elementor-widget-heading" data-id="cd5d3cd" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Run Commands to access your WordPress site.</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-c9e11ef elementor-widget elementor-widget-text-editor" data-id="c9e11ef" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>In the log, look for the following text” <em><strong>To access your WordPress site from outside the cluster follow the steps below:</strong></em>“</p><p>The lines that follow in the log are a set of commands you will need to run in Cloud Shell in order to get your site URL, username and password (If you didn’t set them when installing). </p><p>Run the commands as follows: </p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-8c9577a elementor-widget elementor-widget-text-editor" data-id="8c9577a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>1) run the command that looks similar to this (Yours will be slightly different). The command returns no output</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-b427f64 elementor-widget elementor-widget-text-editor" data-id="b427f64" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><span style="color: #ffffff;"><a style="color: #ffffff;">export SERVICE_IP=$(kubectl get svc –namespace default wordpressa0-145c-4f –template “{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}”)
+
+</a></span></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-1720643 elementor-widget elementor-widget-text-editor" data-id="1720643" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>2) To retreive your website url, run the following command</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-359e950 elementor-widget elementor-widget-text-editor" data-id="359e950" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><span style="color: #ffffff;"><a style="color: #ffffff;">echo “WordPress URL: http://$SERVICE_IP/”
+
+</a></span>
+
+ </div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-a564616 elementor-widget elementor-widget-text-editor" data-id="a564616" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>3) To retrieve your website login page URL, run the following command</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-742ccc6 elementor-widget elementor-widget-text-editor" data-id="742ccc6" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><span style="color: #ffffff;"><a style="color: #ffffff;">echo “WordPress Admin URL: http://$SERVICE_IP/admin””</a></span>
+
+ </div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-1bde0d5 elementor-widget elementor-widget-premium-addon-modal-box" data-id="1bde0d5" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-1bde0d5" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Example Of Expected Output</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-1bde0d5" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p><img loading="lazy" class="aligncenter wp-image-668 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Get-IP-Admin.png" alt="" width="537" height="63" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Get-IP-Admin.png 537w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Get-IP-Admin-300x35.png 300w" sizes="(max-width: 537px) 100vw, 537px"></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-1bde0d5 .premium-modal-box-modal-dialog {
+                width: 85%            }
+            }        </style></div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-b877c06 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="b877c06" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-d7328c6 elementor-column elementor-col-100 elementor-top-column" data-id="d7328c6" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-5d48866 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="5d48866" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-6662118 elementor-column elementor-col-100 elementor-inner-column" data-id="6662118" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-854f6e4 elementor-widget elementor-widget-heading" data-id="854f6e4" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">That's It. You should now be able to access your WordPress site through your browser!</h1>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-cd186c5 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="cd186c5" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-96ba593 elementor-column elementor-col-100 elementor-top-column" data-id="96ba593" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-5fa0dc0 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="5fa0dc0" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-cdbe060 elementor-column elementor-col-50 elementor-inner-column" data-id="cdbe060" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-5da57f9 elementor-widget elementor-widget-heading" data-id="5da57f9" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">11</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-b1abb64 elementor-column elementor-col-50 elementor-inner-column" data-id="b1abb64" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-2108df9 elementor-widget elementor-widget-heading" data-id="2108df9" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Accessing Your Database</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6ffbbdf elementor-widget elementor-widget-text-editor" data-id="6ffbbdf" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Your WordPress installation will be paired with a MariaDB database. To connect to your database, <strong>retrieve your database username and password</strong> (If you didn’t set them up when deploying WordPress, use the commands in the log file to get them) and then do the following:</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-c7ca8f1 elementor-widget elementor-widget-text-editor" data-id="c7ca8f1" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>1) Run a pod that you can use as a client. Run the command that looks similar to this (Yours will be slightly different). </p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-bef4502 elementor-widget elementor-widget-text-editor" data-id="bef4502" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><span style="color: #ffffff;"><a style="color: #ffffff;">
+kubectl run wordpressa0-145c-4f-mariadb-client –rm –tty -i –restart=’Never’ –image  docker.io/bitnami/mariadb:10.5.8-debian-10-r0 –namespace default –command — bash
+
+</a></span>
+
+ </div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-50b73b8 elementor-widget elementor-widget-premium-addon-modal-box" data-id="50b73b8" data-element_type="widget" data-settings='{"premium_modal_box_animation":"fadeInDown"}' data-widget_type="premium-addon-modal-box.default">
+				<div class="elementor-widget-container">
+			
+        <div class="container premium-modal-box-container" data-settings='{"trigger":"button"}'>
+            <div class="premium-modal-trigger-container">
+                                    <button data-toggle="premium-modal" data-target="#premium-modal-50b73b8" type="button" class="premium-modal-trigger-btn premium-btn-lg">
+                                                <span>Example Of Expected Output</span>
+                                            </button>
+                            </div>
+
+            <div id="premium-modal-50b73b8" class="premium-modal-box-modal" role="dialog">
+                <div class="premium-modal-box-modal-dialog" data-modal-animation="fadeInDown animated-fast" data-delay-animation="">
+                    <div class="premium-modal-box-modal-content">
+                                                <div class="premium-modal-box-modal-body">
+                            <p><img loading="lazy" class="aligncenter wp-image-682 size-full" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Maria-DB-1.png" alt="" width="1310" height="63" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Maria-DB-1.png 1310w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Maria-DB-1-300x14.png 300w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Maria-DB-1-1024x49.png 1024w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Maria-DB-1-768x37.png 768w" sizes="(max-width: 1310px) 100vw, 1310px"></p>                        </div>
+                                                    <div class="premium-modal-box-modal-footer">
+                                <button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
+                                    Close                                </button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (min-width: 992px) {#premium-modal-50b73b8 .premium-modal-box-modal-dialog {
+                width: 90%            }
+            }        </style></div>
+				</div>
+				<div class="elementor-element elementor-element-f5c4a35 elementor-widget elementor-widget-text-editor" data-id="f5c4a35" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>2) To connect to primary service (read/write), run the command that looks similar to this (Yours will be slightly different).</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-35f5a55 elementor-widget elementor-widget-text-editor" data-id="35f5a55" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><span style="color: #ffffff;"><a style="color: #ffffff;">mysql -h wordpressa0-145c-4f-mariadb.default.svc.cluster.local -uroot -p bitnami_wordpress
+</a></span></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-33e8224 elementor-widget elementor-widget-text-editor" data-id="33e8224" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>You will be prompted for your database username. ANd then can access your database.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-7d9c0c82 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle elementor-section elementor-top-section" data-id="7d9c0c82" data-element_type="section" id="howitperforms" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-53bdba31 elementor-column elementor-col-50 elementor-top-column" data-id="53bdba31" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-20d20f0f elementor-widget elementor-widget-heading" data-id="20d20f0f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">How The IBM Cloud Performs</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-77a9bac elementor-widget elementor-widget-heading" data-id="77a9bac" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">A review of my overall experience with the IBM Cloud service</h4>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-5df01019 elementor-column elementor-col-50 elementor-top-column" data-id="5df01019" data-element_type="column">
+			<div class="elementor-column-wrap">
+					<div class="elementor-widget-wrap">
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-44fcadbe elementor-reverse-tablet elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="44fcadbe" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-1e2efe37 elementor-column elementor-col-100 elementor-top-column" data-id="1e2efe37" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-1664e4bc elementor-widget elementor-widget-heading" data-id="1664e4bc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Speed</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-c179099 elementor-widget elementor-widget-divider" data-id="c179099" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-2a758414 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="2a758414" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>As expected, the IBM cloud + Kubernetes setup is pretty quick. Tested across multiple locations it performs well. <br><br>My website isn’t a resource-intensive one such as an e-commerce site, but I expect that even if yours is, you will get better performance than you would on the common shared hosting servers offered by companies like GoDaddy or BlueHost.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-faa5f48 elementor-star-rating-mobile--align-center elementor--star-style-star_fontawesome elementor-widget elementor-widget-star-rating" data-id="faa5f48" data-element_type="widget" data-widget_type="star-rating.default">
+				<div class="elementor-widget-container">
+			
+		<div class="elementor-star-rating__wrapper">
+							<div class="elementor-star-rating__title">My Rating: </div>
+						<div class="elementor-star-rating" title="4/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-empty"></i> <span itemprop="ratingValue" class="elementor-screen-only">4/5</span></div>		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-400fc9e1 elementor-column elementor-col-100 elementor-top-column" data-id="400fc9e1" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-10741049 animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="10741049" data-element_type="widget" data-settings='{"_animation":"fadeInLeft"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="623" height="360" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Server-Speed.png" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Server-Speed.png 623w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Server-Speed-300x173.png 300w" sizes="(max-width: 623px) 100vw, 623px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-e97f6de elementor-reverse-tablet elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="e97f6de" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-0bc2245 elementor-column elementor-col-100 elementor-top-column" data-id="0bc2245" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-91b4b5e animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="91b4b5e" data-element_type="widget" data-settings='{"_animation":"fadeInLeft"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="640" height="427" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/nine-koepfer-fYTSQ7B8Q8Y-unsplash.jpg" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/nine-koepfer-fYTSQ7B8Q8Y-unsplash.jpg 640w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/nine-koepfer-fYTSQ7B8Q8Y-unsplash-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-d07c011 elementor-column elementor-col-100 elementor-top-column" data-id="d07c011" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-23075c3 elementor-widget elementor-widget-heading" data-id="23075c3" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Reliability</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-606d512 elementor-widget elementor-widget-divider" data-id="606d512" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6870a77 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="6870a77" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Well, this is a bit of a no-brainer. IBM servers are infamous for their reliability. From AS400 to zSeries, you’re pretty much guaranteed a super reliable (albeit bank-breaking) machine that won’t let you down. <br><br>So while I have only tested the cloud service for a week, I expect it to be as reliable as all their physical machines.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-0526fef elementor--star-style-star_fontawesome elementor-widget elementor-widget-star-rating" data-id="0526fef" data-element_type="widget" data-widget_type="star-rating.default">
+				<div class="elementor-widget-container">
+			
+		<div class="elementor-star-rating__wrapper">
+							<div class="elementor-star-rating__title">My Rating: Provisional</div>
+						<div class="elementor-star-rating" title="5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i> <span itemprop="ratingValue" class="elementor-screen-only">5/5</span></div>		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-b7bb51f elementor-reverse-tablet elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="b7bb51f" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-052b477 elementor-column elementor-col-100 elementor-top-column" data-id="052b477" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-54a10bc elementor-widget elementor-widget-heading" data-id="54a10bc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Usability</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-458c842 elementor-widget elementor-widget-divider" data-id="458c842" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-bd512b5 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="bd512b5" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">Ok, so here it gets a bit complicated. The usability is almost entirely dependant on whether or not you are familiar with cloud servers & command-line environments.
+<br><br>
+If you don’t have knowledge of the above and all you’re used to is cPanel, Plesk or some GUI type of environment….well, you’re going to be confused as hell with the IBM Cloud Server, especially when something goes wrong or doesn’t work.
+<br><br>
+On the other hand, if you’re comfortable with the above, then the setup will be easier for you.</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-7c06648 elementor-star-rating-mobile--align-center elementor--star-style-star_fontawesome elementor-widget elementor-widget-star-rating" data-id="7c06648" data-element_type="widget" data-widget_type="star-rating.default">
+				<div class="elementor-widget-container">
+			
+		<div class="elementor-star-rating__wrapper">
+							<div class="elementor-star-rating__title">My Rating:</div>
+						<div class="elementor-star-rating" title="2.5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-5"></i><i class="elementor-star-empty"></i><i class="elementor-star-empty"></i> <span itemprop="ratingValue" class="elementor-screen-only">2.5/5</span></div>		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-c65bb67 elementor-column elementor-col-100 elementor-top-column" data-id="c65bb67" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-c99cbb6 animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="c99cbb6" data-element_type="widget" data-settings='{"_animation":"fadeInLeft"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="2560" height="1707" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-ketut-subiyanto-4560092-scaled.jpg" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-ketut-subiyanto-4560092-scaled.jpg 2560w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-ketut-subiyanto-4560092-300x200.jpg 300w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-ketut-subiyanto-4560092-1024x683.jpg 1024w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-ketut-subiyanto-4560092-768x512.jpg 768w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-ketut-subiyanto-4560092-1536x1024.jpg 1536w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-ketut-subiyanto-4560092-2048x1365.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-75a1dfa elementor-reverse-tablet elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="75a1dfa" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-a5b8fd6 elementor-column elementor-col-100 elementor-top-column" data-id="a5b8fd6" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-290a69e elementor-aspect-ratio-169 elementor-widget elementor-widget-video" data-id="290a69e" data-element_type="widget" data-settings='{"aspect_ratio":"169"}' data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-wrapper elementor-fit-aspect-ratio elementor-open-inline">
+					<video class="elementor-video" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/Pexels-Videos-4287.mp4" autoplay="" loop="" playsinline="" controlslist="nodownload"></video></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-29aa01a elementor-column elementor-col-100 elementor-top-column" data-id="29aa01a" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-8f59d7f elementor-widget elementor-widget-heading" data-id="8f59d7f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Price</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-e62a108 elementor-widget elementor-widget-divider" data-id="e62a108" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-11fb0ef elementor-invisible elementor-widget elementor-widget-text-editor" data-id="11fb0ef" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix">While there is a massive value for money (given how much you can get done with the free IBM Cloud) It’s an IBM service soooo…It’s a bit expensive.
+<br><br>
+Okay you won’t have to sell a kidney, and this will only happen if your usage is high. However, if you want to get some real work done and go beyond what the free plan can offer, you’re going to have to part with some bucks. <strong>But it’s generally worth it if you use it to it’s full potential.</strong></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-37cf216 elementor-star-rating-mobile--align-center elementor--star-style-star_fontawesome elementor-widget elementor-widget-star-rating" data-id="37cf216" data-element_type="widget" data-widget_type="star-rating.default">
+				<div class="elementor-widget-container">
+			
+		<div class="elementor-star-rating__wrapper">
+							<div class="elementor-star-rating__title">My Rating:</div>
+						<div class="elementor-star-rating" title="3.5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-5"></i><i class="elementor-star-empty"></i> <span itemprop="ratingValue" class="elementor-screen-only">3.5/5</span></div>		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-5d95774 elementor-reverse-tablet elementor-reverse-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="5d95774" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-853c686 elementor-column elementor-col-100 elementor-top-column" data-id="853c686" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-1ce9d98 elementor-widget elementor-widget-heading" data-id="1ce9d98" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Customer Support</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-009e973 elementor-widget elementor-widget-divider" data-id="009e973" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-68c2b2e elementor-invisible elementor-widget elementor-widget-text-editor" data-id="68c2b2e" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>The customer support offered by the IBM team is <strong>exceptional</strong>. This was a huge standout for me, as their support team was polite, experienced and patient. They should really consider outsourcing their support staff to other companies.</p></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-618ea41 elementor-star-rating-mobile--align-center elementor--star-style-star_fontawesome elementor-widget elementor-widget-star-rating" data-id="618ea41" data-element_type="widget" data-widget_type="star-rating.default">
+				<div class="elementor-widget-container">
+			
+		<div class="elementor-star-rating__wrapper">
+							<div class="elementor-star-rating__title">My Rating:</div>
+						<div class="elementor-star-rating" title="5/5" itemtype="http://schema.org/Rating" itemscope="" itemprop="reviewRating"><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i><i class="elementor-star-full"></i> <span itemprop="ratingValue" class="elementor-screen-only">5/5</span></div>		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-34e9107 elementor-column elementor-col-100 elementor-top-column" data-id="34e9107" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-1b513e9 animated-fast elementor-invisible elementor-widget elementor-widget-image" data-id="1b513e9" data-element_type="widget" data-settings='{"_animation":"fadeInLeft"}' data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="640" height="426" src="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-tima-miroshnichenko-5453837.jpg" class="attachment-full size-full" alt="" loading="lazy" srcset="https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-tima-miroshnichenko-5453837.jpg 640w,https://thabisomak.github.io/websiteonibmcloud/wp-content/uploads/2020/12/pexels-tima-miroshnichenko-5453837-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px"></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-a050b24 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible elementor-section elementor-top-section" data-id="a050b24" data-element_type="section" id="conclusion" data-settings='{"animation":"fadeIn","background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-30b7e43 elementor-column elementor-col-100 elementor-top-column" data-id="30b7e43" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-463c6fa elementor-widget elementor-widget-heading" data-id="463c6fa" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Conclusion</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-a38dfba elementor-widget elementor-widget-divider" data-id="a38dfba" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-b6eb9ea elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="b6eb9ea" data-element_type="section"><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-eb7c0bf elementor-column elementor-col-100 elementor-inner-column" data-id="eb7c0bf" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-5847cc0 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="5847cc0" data-element_type="widget" data-settings='{"_animation":"fadeIn","_animation_delay":50}' data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Overall the experience of hosting a website on the IBM Cloud has been a pleasant one. Their support team was exceptional and for me, this makes or breaks a service. If you’re looking to host your business on a fast, reliable and powerful system, I would recommend it. Just make sure your budget allows.</p><p> </p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section><section class="elementor-element elementor-element-bf7de1f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="bf7de1f" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-cbdfaf7 elementor-column elementor-col-100 elementor-top-column" data-id="cbdfaf7" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-cc7db17 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="cc7db17" data-element_type="section" data-settings='{"background_background":"classic"}'><div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-241da7a elementor-column elementor-col-50 elementor-inner-column" data-id="241da7a" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-c6d095d elementor-widget elementor-widget-heading" data-id="c6d095d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">useful links</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-ad6e897 elementor-icon-list--layout-traditional elementor-widget elementor-widget-icon-list" data-id="ad6e897" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items"><li class="elementor-icon-list-item">
+					<a href="https://docs.bitnami.com/kubernetes/get-started-charts-iks/" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Kubernetes</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+					<a href="https://docs.bitnami.com/kubernetes/get-started-charts-iks/" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Deploying WordPress</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+					<a href="https://cloud.ibm.com/docs/openshift?topic=openshift-helm" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Adding Services using Helm Chart</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+					<a href="https://cloud.ibm.com/docs/apps?topic=apps-getting-started" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Apps</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+					<a href="https://cloud.ibm.com/docs/BlockStorage/index.html#getting-started-with-block-storage" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Block Storage</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+					<a href="https://cloud.ibm.com/docs/containers?topic=containers-block_storage#install_block" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">Install Block Storage</span>
+											</a>
+									</li>
+						</ul></div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-8e00a22 elementor-column elementor-col-50 elementor-inner-column" data-id="8e00a22" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-b27da1d elementor-widget elementor-widget-heading" data-id="b27da1d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Sources</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-fe02e78 elementor-icon-list--layout-traditional elementor-widget elementor-widget-icon-list" data-id="fe02e78" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items"><li class="elementor-icon-list-item">
+					<a href="https://www.vmware.com/topics/glossary/content/container-deployment#:~:text=Container%20deployment%20is%20the%20act,cloud%20or%20on%2Dpremises%20server." target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">https://www.vmware.com/</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+					<a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/#why-you-need-kubernetes-and-what-can-it-do" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">https://kubernetes.io/docs/</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+					<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" target="_blank">						<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-dot-circle"></i>						</span>
+										<span class="elementor-icon-list-text">https://kubernetes.io/docs/</span>
+											</a>
+									</li>
+						</ul></div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section></div>
+			</div>
+		</div>
+		<link rel="stylesheet" id="premium-addons-css" href="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-css/premium-addons.min.css" media="all"><script id="astra-theme-js-js-extra">
+var astra = {"break_point":"768","isRtl":""};
+</script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/themes/astra/assets/js/minified/style.min.js" id="astra-theme-js-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.min.js" id="smartmenus-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/modal.min.js" id="modal-js-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/lottie.min.js" id="lottie-js-js"></script><script id="premium-addons-js-extra">
+var PremiumSettings = {"ajaxurl":"https:\/\/thabisomak.github.io\/websiteonibmcloud\/wp-admin\/admin-ajax.php","nonce":"06f76641ce"};
+</script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/premium-addons.min.js" id="premium-addons-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/js/frontend-modules.min.js" id="elementor-frontend-modules-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js" id="elementor-sticky-js"></script><script id="elementor-pro-frontend-js-before">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/thabisomak.github.io\/websiteonibmcloud\/wp-admin\/admin-ajax.php","nonce":"183bce5146","shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"google":{"title":"Google+","has_counter":true},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"delicious":{"title":"Delicious"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"en_US","app_id":""}};
+</script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor-pro/assets/js/frontend.min.js" id="elementor-pro-frontend-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-includes/js/jquery/ui/core.min.js" id="jquery-ui-core-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js" id="elementor-dialog-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js" id="elementor-waypoints-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/swiper/swiper.min.js" id="swiper-js"></script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/lib/share-link/share-link.min.js" id="share-link-js"></script><script id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","downloadImage":"Download image"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"2.9.8","urls":{"assets":"https:\/\/thabisomak.github.io\/websiteonibmcloud\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"general":{"elementor_global_image_lightbox":"yes","elementor_lightbox_enable_counter":"yes","elementor_lightbox_enable_fullscreen":"yes","elementor_lightbox_enable_zoom":"yes","elementor_lightbox_enable_share":"yes","elementor_lightbox_title_src":"title","elementor_lightbox_description_src":"description"},"editorPreferences":[]},"post":{"id":384,"title":"Wordpress%20Using%20Kubernetes%20%2B%20Helm%20Chart%20%E2%80%93%20Tutorial","excerpt":"","featuredImage":false}};
+</script><script src="https://thabisomak.github.io/websiteonibmcloud/wp-content/plugins/elementor/assets/js/frontend.min.js" id="elementor-frontend-js"></script><script>
+			/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
+			</script></body></html>
